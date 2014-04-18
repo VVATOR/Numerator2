@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Untitled</title>
+     
+<style>
+a.tagRed{font-size:12px;color:red;}
+a.tagRedBig{font-size:32px;color:red;}
+a.tagBlack{font-size:16px;color:black;}
+</style>
+     
+<script>
+ 
+var styles = new Array("tagRed","tagRedBig","tagBlack");
+ 
+Array.prototype.shuffle = function( b )
+{
+ var i = this.length, j, t;
+ while( i )
+ {
+  j = Math.floor( ( i-- ) * Math.random() );
+  t = b && typeof this[i].shuffle!=='undefined' ? this[i].shuffle() : this[i];
+  this[i] = this[j];
+  this[j] = t;
+ }
+ 
+ return this;
+};
+ 
+function getTags(){
+    var elDiv=document.getElementById("tags");
+    var el=elDiv.getElementsByTagName("a");
+    var txt=new Array();
+    for(var i=0; i<el.length; i++){
+        n = Math.round(Math.random()*(styles.length-1));
+        el[i].setAttribute("class",styles[n]);
+        txt.push(el[i].outerHTML);
+    }
+    txt.shuffle();
+    elDiv.innerHTML=txt.toString();
+    elDiv.style.display="block";
+}
+ 
+</script>
+ 
+</head>
+ 
+<body onload="getTags()">
+ 
+<div id="tags" style="display:none;">
+    <a href="link1.html">&#242;&#229;&#227; 1</a>
+    <a href="link2.html">&#242;&#229;&#227; 2</a>
+    <a href="link3.html">&#242;&#229;&#227; 3</a>
+    <a href="link4.html">&#242;&#229;&#227; 4</a>
+    <a href="link5.html">&#242;&#229;&#227; 5</a>
+    <a href="link6.html">&#242;&#229;&#227; 6</a>
+</div>
+ 
+</body>
+</html>
