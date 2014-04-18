@@ -1,0 +1,150 @@
+<%@ page language="java" contentType="text/html; charset=windows-1251"
+	pageEncoding="windows-1251"%>
+<%@page import="OracleConnect.SQLRequest" import="NumGenerator.NumGenerate" import="java.util.*"%>
+<%
+ ArrayList<String> lSelectedTree = new ArrayList<String>(); 
+ int lSelectedTreeCount=0;
+ SQLRequest sql = new SQLRequest();
+ String SelectedItem="";
+ boolean lbl = false;
+ int i=0;
+ if(request.getParameter("SelectedItem") != null)
+	 SelectedItem = new String (request.getParameter("SelectedItem").getBytes("ISO-8859-1"));
+%>
+	<table border=0 CELLPADDING=0 CELLSPACING=0>
+		<tr>
+			<td width=580 background="images/1.png"><img src="images/1.png"></img></td>
+			<td width=100% background="images/2.png" valign=bottom>
+					<table border=0>
+					<tr>
+					<td valign=bottom><font size=3 color="#6495ED">Нумератор для:</font></td>
+					<%
+					if(SelectedItem.equals("")){
+						//сли ничего не выбрано показываем список изделий
+						out.println("<td valign=bottom>");
+						out.println("<script type=\"text/javascript\">");
+						out.println("function selForm1_submit(){");
+						out.println("	selForm1.submit();");
+						out.println("}");
+						out.println("</script>");
+						out.println("<form name=selForm1>");
+						out.println("<select size=\"1\" name=\"SelectedItem\" onchange=selForm1_submit()>");
+						if(SelectedItem.equals("")) 
+							out.println("<option selected>Выберите изделие</option>");
+						sql.GetProductList();
+						while(sql.rs.next()){
+							if(!SelectedItem.equals(sql.rs.getString("OBOZNACHENIE")))
+								out.println("<option>" + sql.rs.getString("OBOZNACHENIE") + "</option>");	
+							else
+								out.println("<option selected>" + sql.rs.getString("OBOZNACHENIE") + "</option>");
+						}
+						out.println("</select>");
+						out.println("</form>");
+						out.println("</td>");
+					}else{
+						//что-то выбрано
+						//считываем дерево в обратную сторону (до выбранного элемента)
+						sql.GetBackList(SelectedItem);
+						while(sql.rs.next()){
+							if(sql.rs.getInt("LEVEL") != 1){
+								lSelectedTree.add(sql.rs.getString("OBOZNACHENIE"));
+								lSelectedTreeCount++;
+							}
+						}
+						//отображаем все предыдущие списки
+						for(i=lSelectedTreeCount;i>0;i--){
+							if(i != lSelectedTree.size()) out.println("-");
+							out.println("<td valign=bottom>");
+							out.println("<script type=\"text/javascript\">");
+							out.println("function selFormPrev" + i + "_submit(){");
+							out.println("	selFormPrev" + i + ".submit();");
+							out.println("}");
+							out.println("</script>");
+							out.println("<form name=selFormPrev" + i + ">");
+							out.println("<select size=\"1\" name=\"SelectedItem\" onchange=selFormPrev" + i + "_submit()>");
+							out.println("<option selected>" + lSelectedTree.get(i-1) + "</option>");
+							//добавляем остальные варианты
+							if(i==lSelectedTreeCount){
+								//нужно добавить изделия
+								sql.GetProductList();
+								while(sql.rs.next()){
+									out.println("<option>" + sql.rs.getString("OBOZNACHENIE") + "</option>");
+								}
+							} else{
+								//нужно добавить подузлы (делаем запрос для предыдущего элемнета)
+								sql.GetNextLevel(lSelectedTree.get(i));
+								while(sql.rs.next()){
+									if(!lSelectedTree.get(i-1).equals(sql.rs.getString("OBOZNACHENIE")))
+										out.println("<option>" + sql.rs.getString("OBOZNACHENIE") + "</option>");
+								}
+								
+							}
+							out.println("</select>");
+							out.println("</form>");
+							out.println("</td>");
+							
+						}
+						//отображаем текущий список
+						out.println("<td valign=bottom>");
+						out.println("<script type=\"text/javascript\">");
+						out.println("function selFormCur_submit(){");
+						out.println("	selFormCur.submit();");
+						out.println("}");
+						out.println("</script>");
+						out.println("<form name=selFormCur>");
+						out.println(" - <select size=\"1\" name=\"SelectedItem\" onchange=selFormCur_submit()>");
+						out.println("<option selected style=\"background-color: #6495ED\">" + SelectedItem + "</option>");
+						//добавляем остальные варианты
+						if(lSelectedTreeCount==0){
+							//нужно добавить изделия
+							sql.GetProductList();
+							while(sql.rs.next()){
+								out.println("<option>" + sql.rs.getString("OBOZNACHENIE") + "</option>");
+							}
+						} else{
+							//нужно добавить подузлы
+							sql.GetNextLevel(lSelectedTree.get(0));
+							while(sql.rs.next()){
+								if(!SelectedItem.equals(sql.rs.getString("OBOZNACHENIE")))
+									out.println("<option>" + sql.rs.getString("OBOZNACHENIE") + "</option>");
+							}
+						}
+						out.println("</select>");
+						out.println("</form>");
+						out.println("</td>");
+						//отображаем следующий список (если есть что отображать)
+						sql.GetNextLevel(SelectedItem);
+						while(sql.rs.next()){
+							if(lbl == false){
+								out.println("<td valign=bottom>");
+								out.println("<script type=\"text/javascript\">");
+								out.println("function selFormNext_submit(){");
+								out.println("	selFormNext.submit();");
+								out.println("}");
+								out.println("</script>");
+								out.println("<form name=selFormNext>");
+								out.println(" - <select size=\"1\" name=\"SelectedItem\" onchange=selFormNext_submit()>");
+								out.println("<option selected>Выберите подузел</option>");
+								lbl = true;
+							}
+							out.println("<option>" + sql.rs.getString("OBOZNACHENIE") + "</option>");
+						}
+						if(lbl == true){
+							out.println("</select>");
+							out.println("</form>");
+							out.println("</td>");
+						}
+						//отображаем кнопку назад если она нужна
+						if(lSelectedTreeCount > 0){
+							out.println("<td>");
+							out.println("<a href=\"index.jsp?SelectedItem=" + lSelectedTree.get(0) + "\"><img src=\"images/undo.png\" border=0 title=\"Назад\" width=24 height=24></img></a>");
+							out.println("</td>");
+						}
+					}
+					%>
+					</tr>
+					</table>
+			</td>
+			<td width=40><img src="images/3.png"></img></td>
+		</tr>	
+	</table>

@@ -1,0 +1,3433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://lang.java" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://lang.java" xmlns:intf="http://lang.java" xmlns:tns1="http://DefaultNamespace" xmlns:tns2="http://util.java" xmlns:tns3="http://charset.nio.java" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:p="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://lang.java" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://charset.nio.java"/>
+   <import namespace="http://DefaultNamespace"/>
+   <import namespace="http://util.java"/>
+   <element name="in0" type="xsd:anyType"/>
+   <element name="equalsReturn" type="xsd:boolean"/>
+   <element name="toStringReturn" type="xsd:string"/>
+   <element name="hashCodeReturn" type="xsd:int"/>
+   <element name="in1" type="xsd:string"/>
+   <element name="compareToReturn" type="xsd:int"/>
+   <element name="in2" type="xsd:anyType"/>
+   <element name="compareToReturn1" type="xsd:int"/>
+   <element name="in3" type="xsd:int"/>
+   <element name="indexOfReturn" type="xsd:int"/>
+   <element name="in4" type="xsd:int"/>
+   <element name="in5" type="xsd:int"/>
+   <element name="indexOfReturn1" type="xsd:int"/>
+   <element name="in6" type="xsd:string"/>
+   <element name="indexOfReturn2" type="xsd:int"/>
+   <element name="in7" type="xsd:string"/>
+   <element name="in8" type="xsd:int"/>
+   <element name="indexOfReturn3" type="xsd:int"/>
+   <element name="in9" type="xsd:int"/>
+   <element name="valueOfReturn" type="xsd:string"/>
+   <element name="in10" type="xsd:anyType"/>
+   <element name="valueOfReturn1" type="xsd:string"/>
+   <element name="in11" type="xsd:boolean"/>
+   <element name="valueOfReturn2" type="xsd:string"/>
+   <element name="in12" type="xsd:float"/>
+   <element name="valueOfReturn3" type="xsd:string"/>
+   <complexType name="ArrayOf_tns1_char">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:char"/>
+    </sequence>
+   </complexType>
+   <element name="in13">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:char"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="in14" type="xsd:int"/>
+   <element name="in15" type="xsd:int"/>
+   <element name="valueOfReturn4" type="xsd:string"/>
+   <element name="in16" type="xsd:double"/>
+   <element name="valueOfReturn5" type="xsd:string"/>
+   <element name="in17">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:char"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="valueOfReturn6" type="xsd:string"/>
+   <element name="in18" type="xsd:anyType"/>
+   <element name="valueOfReturn7" type="xsd:string"/>
+   <element name="in19" type="xsd:long"/>
+   <element name="valueOfReturn8" type="xsd:string"/>
+   <element name="in20" type="xsd:int"/>
+   <element name="charAtReturn" type="tns1:char"/>
+   <element name="in21" type="xsd:int"/>
+   <element name="codePointAtReturn" type="xsd:int"/>
+   <element name="in22" type="xsd:int"/>
+   <element name="codePointBeforeReturn" type="xsd:int"/>
+   <element name="in23" type="xsd:int"/>
+   <element name="in24" type="xsd:int"/>
+   <element name="codePointCountReturn" type="xsd:int"/>
+   <element name="in25" type="xsd:string"/>
+   <element name="compareToIgnoreCaseReturn" type="xsd:int"/>
+   <element name="in26" type="xsd:string"/>
+   <element name="concatReturn" type="xsd:string"/>
+   <element name="in27" type="xsd:anyType"/>
+   <element name="containsReturn" type="xsd:boolean"/>
+   <element name="in28" type="impl:CharSequence"/>
+   <element name="contentEqualsReturn" type="xsd:boolean"/>
+   <element name="in29" type="xsd:anyType"/>
+   <element name="contentEqualsReturn1" type="xsd:boolean"/>
+   <element name="in30">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:char"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="copyValueOfReturn" type="xsd:string"/>
+   <element name="in31">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:char"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="in32" type="xsd:int"/>
+   <element name="in33" type="xsd:int"/>
+   <element name="copyValueOfReturn1" type="xsd:string"/>
+   <element name="in34" type="xsd:string"/>
+   <element name="endsWithReturn" type="xsd:boolean"/>
+   <element name="in35" type="xsd:string"/>
+   <element name="equalsIgnoreCaseReturn" type="xsd:boolean"/>
+   <element name="in36" type="xsd:string"/>
+   <element name="in37">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="formatReturn" type="xsd:string"/>
+   <element name="in38" type="xsd:anyType"/>
+   <element name="in39" type="xsd:string"/>
+   <element name="in40">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="formatReturn1" type="xsd:string"/>
+   <element name="in41" type="xsd:string"/>
+   <element name="getBytesReturn">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:byte"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="in42" type="xsd:int"/>
+   <element name="in43" type="xsd:int"/>
+   <element name="in44">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:byte"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="in45" type="xsd:int"/>
+   <element name="getBytesReturn1">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:byte"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="in46" type="xsd:anyType"/>
+   <element name="getBytesReturn2">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:byte"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="in47" type="xsd:int"/>
+   <element name="in48" type="xsd:int"/>
+   <element name="in49">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:char"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="in50" type="xsd:int"/>
+   <element name="internReturn" type="xsd:string"/>
+   <element name="isEmptyReturn" type="xsd:boolean"/>
+   <element name="in51" type="xsd:string"/>
+   <element name="lastIndexOfReturn" type="xsd:int"/>
+   <element name="in52" type="xsd:int"/>
+   <element name="in53" type="xsd:int"/>
+   <element name="lastIndexOfReturn1" type="xsd:int"/>
+   <element name="in54" type="xsd:int"/>
+   <element name="lastIndexOfReturn2" type="xsd:int"/>
+   <element name="in55" type="xsd:string"/>
+   <element name="in56" type="xsd:int"/>
+   <element name="lastIndexOfReturn3" type="xsd:int"/>
+   <element name="lengthReturn" type="xsd:int"/>
+   <element name="in57" type="xsd:string"/>
+   <element name="matchesReturn" type="xsd:boolean"/>
+   <element name="in58" type="xsd:int"/>
+   <element name="in59" type="xsd:int"/>
+   <element name="offsetByCodePointsReturn" type="xsd:int"/>
+   <element name="in60" type="xsd:boolean"/>
+   <element name="in61" type="xsd:int"/>
+   <element name="in62" type="xsd:string"/>
+   <element name="in63" type="xsd:int"/>
+   <element name="in64" type="xsd:int"/>
+   <element name="regionMatchesReturn" type="xsd:boolean"/>
+   <element name="in65" type="xsd:int"/>
+   <element name="in66" type="xsd:string"/>
+   <element name="in67" type="xsd:int"/>
+   <element name="in68" type="xsd:int"/>
+   <element name="regionMatchesReturn1" type="xsd:boolean"/>
+   <element name="in69" type="impl:CharSequence"/>
+   <element name="in70" type="impl:CharSequence"/>
+   <element name="replaceReturn" type="xsd:string"/>
+   <element name="in71" type="tns1:char"/>
+   <element name="in72" type="tns1:char"/>
+   <element name="replaceReturn1" type="xsd:string"/>
+   <element name="in73" type="xsd:string"/>
+   <element name="in74" type="xsd:string"/>
+   <element name="replaceAllReturn" type="xsd:string"/>
+   <element name="in75" type="xsd:string"/>
+   <element name="in76" type="xsd:string"/>
+   <element name="replaceFirstReturn" type="xsd:string"/>
+   <element name="in77" type="xsd:string"/>
+   <element name="splitReturn">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="in78" type="xsd:string"/>
+   <element name="in79" type="xsd:int"/>
+   <element name="splitReturn1">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="in80" type="xsd:string"/>
+   <element name="startsWithReturn" type="xsd:boolean"/>
+   <element name="in81" type="xsd:string"/>
+   <element name="in82" type="xsd:int"/>
+   <element name="startsWithReturn1" type="xsd:boolean"/>
+   <element name="in83" type="xsd:int"/>
+   <element name="in84" type="xsd:int"/>
+   <element name="subSequenceReturn" type="impl:CharSequence"/>
+   <element name="in85" type="xsd:int"/>
+   <element name="substringReturn" type="xsd:string"/>
+   <element name="in86" type="xsd:int"/>
+   <element name="in87" type="xsd:int"/>
+   <element name="substringReturn1" type="xsd:string"/>
+   <element name="toCharArrayReturn">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:char"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="toLowerCaseReturn" type="xsd:string"/>
+   <element name="in88" type="tns2:Locale"/>
+   <element name="toLowerCaseReturn1" type="xsd:string"/>
+   <element name="toUpperCaseReturn" type="xsd:string"/>
+   <element name="in89" type="tns2:Locale"/>
+   <element name="toUpperCaseReturn1" type="xsd:string"/>
+   <element name="trimReturn" type="xsd:string"/>
+   <element name="4">
+   	<complexType>
+   		<sequence>
+
+   			<element name="in" type="string"></element>
+   		</sequence>
+   	</complexType>
+   </element>
+            <element name="out" type="string"></element>
+            <element name="NewOperation">
+            	<complexType>
+            		<sequence>
+            			<element name="in" type="string"></element>
+            		</sequence>
+            	</complexType>
+            </element>
+            <element name="out1" type="string"></element>
+        </schema>
+ </wsdl:types>
+
+   <wsdl:message name="contentEqualsResponse">
+
+      <wsdl:part element="impl:contentEqualsReturn" name="contentEqualsReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="startsWithRequest">
+
+      <wsdl:part element="impl:in80" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="compareToRequest1">
+
+      <wsdl:part element="impl:in2" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBytesRequest1">
+
+      <wsdl:part element="impl:in42" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in43" name="in1">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in44" name="in2">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in45" name="in3">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="replaceResponse1">
+
+      <wsdl:part element="impl:replaceReturn1" name="replaceReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="contentEqualsResponse1">
+
+      <wsdl:part element="impl:contentEqualsReturn1" name="contentEqualsReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBytesRequest2">
+
+   </wsdl:message>
+
+   <wsdl:message name="getBytesRequest3">
+
+      <wsdl:part element="impl:in46" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="splitRequest1">
+
+      <wsdl:part element="impl:in78" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in79" name="in1">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="splitRequest">
+
+      <wsdl:part element="impl:in77" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="endsWithRequest">
+
+      <wsdl:part element="impl:in34" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="toLowerCaseRequest1">
+
+      <wsdl:part element="impl:in88" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="valueOfRequest">
+
+      <wsdl:part element="impl:in9" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="substringRequest">
+
+      <wsdl:part element="impl:in85" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="lastIndexOfRequest1">
+
+      <wsdl:part element="impl:in52" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in53" name="in1">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="toLowerCaseResponse">
+
+      <wsdl:part element="impl:toLowerCaseReturn" name="toLowerCaseReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="lastIndexOfRequest2">
+
+      <wsdl:part element="impl:in54" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="lastIndexOfRequest3">
+
+      <wsdl:part element="impl:in55" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in56" name="in1">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="offsetByCodePointsRequest">
+
+      <wsdl:part element="impl:in58" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in59" name="in1">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="codePointCountResponse">
+
+      <wsdl:part element="impl:codePointCountReturn" name="codePointCountReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="contentEqualsRequest">
+
+      <wsdl:part element="impl:in28" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="codePointAtResponse">
+
+      <wsdl:part element="impl:codePointAtReturn" name="codePointAtReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="hashCodeResponse">
+
+      <wsdl:part element="impl:hashCodeReturn" name="hashCodeReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="containsResponse">
+
+      <wsdl:part element="impl:containsReturn" name="containsReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="codePointBeforeRequest">
+
+      <wsdl:part element="impl:in22" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="replaceRequest1">
+
+      <wsdl:part element="impl:in71" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in72" name="in1">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="trimRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="isEmptyResponse">
+
+      <wsdl:part element="impl:isEmptyReturn" name="isEmptyReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="indexOfRequest">
+
+      <wsdl:part element="impl:in3" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="internResponse">
+
+      <wsdl:part element="impl:internReturn" name="internReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="substringRequest1">
+
+      <wsdl:part element="impl:in86" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in87" name="in1">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="indexOfResponse">
+
+      <wsdl:part element="impl:indexOfReturn" name="indexOfReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="endsWithResponse">
+
+      <wsdl:part element="impl:endsWithReturn" name="endsWithReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="matchesResponse">
+
+      <wsdl:part element="impl:matchesReturn" name="matchesReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="equalsResponse">
+
+      <wsdl:part element="impl:equalsReturn" name="equalsReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCharsResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="regionMatchesRequest">
+
+      <wsdl:part element="impl:in60" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in61" name="in1">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in62" name="in2">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in63" name="in3">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in64" name="in4">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="compareToIgnoreCaseRequest">
+
+      <wsdl:part element="impl:in25" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="toUpperCaseRequest1">
+
+      <wsdl:part element="impl:in89" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="replaceRequest">
+
+      <wsdl:part element="impl:in69" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in70" name="in1">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="compareToRequest">
+
+      <wsdl:part element="impl:in1" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="containsRequest">
+
+      <wsdl:part element="impl:in27" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="compareToIgnoreCaseResponse">
+
+      <wsdl:part element="impl:compareToIgnoreCaseReturn" name="compareToIgnoreCaseReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="copyValueOfRequest">
+
+      <wsdl:part element="impl:in30" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="hashCodeRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="toLowerCaseResponse1">
+
+      <wsdl:part element="impl:toLowerCaseReturn1" name="toLowerCaseReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="matchesRequest">
+
+      <wsdl:part element="impl:in57" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="toUpperCaseResponse1">
+
+      <wsdl:part element="impl:toUpperCaseReturn1" name="toUpperCaseReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="subSequenceRequest">
+
+      <wsdl:part element="impl:in83" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in84" name="in1">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="copyValueOfResponse">
+
+      <wsdl:part element="impl:copyValueOfReturn" name="copyValueOfReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="toStringResponse">
+
+      <wsdl:part element="impl:toStringReturn" name="toStringReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="replaceResponse">
+
+      <wsdl:part element="impl:replaceReturn" name="replaceReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="formatRequest1">
+
+      <wsdl:part element="impl:in38" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in39" name="in1">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in40" name="in2">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="valueOfResponse">
+
+      <wsdl:part element="impl:valueOfReturn" name="valueOfReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="equalsIgnoreCaseRequest">
+
+      <wsdl:part element="impl:in35" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="splitResponse">
+
+      <wsdl:part element="impl:splitReturn" name="splitReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="replaceAllResponse">
+
+      <wsdl:part element="impl:replaceAllReturn" name="replaceAllReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="copyValueOfRequest1">
+
+      <wsdl:part element="impl:in31" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in32" name="in1">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in33" name="in2">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="codePointAtRequest">
+
+      <wsdl:part element="impl:in21" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBytesRequest">
+
+      <wsdl:part element="impl:in41" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="formatResponse1">
+
+      <wsdl:part element="impl:formatReturn1" name="formatReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="toStringRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="contentEqualsRequest1">
+
+      <wsdl:part element="impl:in29" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="regionMatchesRequest1">
+
+      <wsdl:part element="impl:in65" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in66" name="in1">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in67" name="in2">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in68" name="in3">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="substringResponse">
+
+      <wsdl:part element="impl:substringReturn" name="substringReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="toLowerCaseRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="startsWithRequest1">
+
+      <wsdl:part element="impl:in81" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in82" name="in1">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="regionMatchesResponse">
+
+      <wsdl:part element="impl:regionMatchesReturn" name="regionMatchesReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="equalsIgnoreCaseResponse">
+
+      <wsdl:part element="impl:equalsIgnoreCaseReturn" name="equalsIgnoreCaseReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="lastIndexOfResponse1">
+
+      <wsdl:part element="impl:lastIndexOfReturn1" name="lastIndexOfReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="startsWithResponse1">
+
+      <wsdl:part element="impl:startsWithReturn1" name="startsWithReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="lengthRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="lastIndexOfResponse3">
+
+      <wsdl:part element="impl:lastIndexOfReturn3" name="lastIndexOfReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="lastIndexOfResponse2">
+
+      <wsdl:part element="impl:lastIndexOfReturn2" name="lastIndexOfReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="concatResponse">
+
+      <wsdl:part element="impl:concatReturn" name="concatReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="toCharArrayResponse">
+
+      <wsdl:part element="impl:toCharArrayReturn" name="toCharArrayReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="equalsRequest">
+
+      <wsdl:part element="impl:in0" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="indexOfResponse2">
+
+      <wsdl:part element="impl:indexOfReturn2" name="indexOfReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="indexOfResponse3">
+
+      <wsdl:part element="impl:indexOfReturn3" name="indexOfReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="indexOfResponse1">
+
+      <wsdl:part element="impl:indexOfReturn1" name="indexOfReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="replaceAllRequest">
+
+      <wsdl:part element="impl:in73" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in74" name="in1">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="toUpperCaseResponse">
+
+      <wsdl:part element="impl:toUpperCaseReturn" name="toUpperCaseReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="trimResponse">
+
+      <wsdl:part element="impl:trimReturn" name="trimReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="indexOfRequest1">
+
+      <wsdl:part element="impl:in4" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in5" name="in1">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBytesResponse1">
+
+   </wsdl:message>
+
+   <wsdl:message name="indexOfRequest3">
+
+      <wsdl:part element="impl:in7" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in8" name="in1">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBytesResponse2">
+
+      <wsdl:part element="impl:getBytesReturn1" name="getBytesReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="indexOfRequest2">
+
+      <wsdl:part element="impl:in6" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBytesResponse3">
+
+      <wsdl:part element="impl:getBytesReturn2" name="getBytesReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="toCharArrayRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="regionMatchesResponse1">
+
+      <wsdl:part element="impl:regionMatchesReturn1" name="regionMatchesReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="codePointBeforeResponse">
+
+      <wsdl:part element="impl:codePointBeforeReturn" name="codePointBeforeReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="compareToResponse">
+
+      <wsdl:part element="impl:compareToReturn" name="compareToReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="copyValueOfResponse1">
+
+      <wsdl:part element="impl:copyValueOfReturn1" name="copyValueOfReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="subSequenceResponse">
+
+      <wsdl:part element="impl:subSequenceReturn" name="subSequenceReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="replaceFirstRequest">
+
+      <wsdl:part element="impl:in75" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in76" name="in1">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="charAtRequest">
+
+      <wsdl:part element="impl:in20" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="isEmptyRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="replaceFirstResponse">
+
+      <wsdl:part element="impl:replaceFirstReturn" name="replaceFirstReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="codePointCountRequest">
+
+      <wsdl:part element="impl:in23" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in24" name="in1">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBytesResponse">
+
+      <wsdl:part element="impl:getBytesReturn" name="getBytesReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCharsRequest">
+
+      <wsdl:part element="impl:in47" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in48" name="in1">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in49" name="in2">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in50" name="in3">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="offsetByCodePointsResponse">
+
+      <wsdl:part element="impl:offsetByCodePointsReturn" name="offsetByCodePointsReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="splitResponse1">
+
+      <wsdl:part element="impl:splitReturn1" name="splitReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="valueOfRequest8">
+
+      <wsdl:part element="impl:in19" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="lastIndexOfResponse">
+
+      <wsdl:part element="impl:lastIndexOfReturn" name="lastIndexOfReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="charAtResponse">
+
+      <wsdl:part element="impl:charAtReturn" name="charAtReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="valueOfRequest7">
+
+      <wsdl:part element="impl:in18" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="lastIndexOfRequest">
+
+      <wsdl:part element="impl:in51" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="toUpperCaseRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="startsWithResponse">
+
+      <wsdl:part element="impl:startsWithReturn" name="startsWithReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="valueOfRequest1">
+
+      <wsdl:part element="impl:in10" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="valueOfResponse2">
+
+      <wsdl:part element="impl:valueOfReturn2" name="valueOfReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="compareToResponse1">
+
+      <wsdl:part element="impl:compareToReturn1" name="compareToReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="valueOfResponse1">
+
+      <wsdl:part element="impl:valueOfReturn1" name="valueOfReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="valueOfRequest2">
+
+      <wsdl:part element="impl:in11" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="valueOfResponse4">
+
+      <wsdl:part element="impl:valueOfReturn4" name="valueOfReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="valueOfResponse3">
+
+      <wsdl:part element="impl:valueOfReturn3" name="valueOfReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="internRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="substringResponse1">
+
+      <wsdl:part element="impl:substringReturn1" name="substringReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="valueOfResponse6">
+
+      <wsdl:part element="impl:valueOfReturn6" name="valueOfReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="valueOfRequest5">
+
+      <wsdl:part element="impl:in16" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="valueOfRequest6">
+
+      <wsdl:part element="impl:in17" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="valueOfResponse5">
+
+      <wsdl:part element="impl:valueOfReturn5" name="valueOfReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="formatRequest">
+
+      <wsdl:part element="impl:in36" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in37" name="in1">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="valueOfResponse8">
+
+      <wsdl:part element="impl:valueOfReturn8" name="valueOfReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="valueOfRequest3">
+
+      <wsdl:part element="impl:in12" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="valueOfResponse7">
+
+      <wsdl:part element="impl:valueOfReturn7" name="valueOfReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="valueOfRequest4">
+
+      <wsdl:part element="impl:in13" name="in0">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in14" name="in1">
+
+      </wsdl:part>
+
+      <wsdl:part element="impl:in15" name="in2">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="formatResponse">
+
+      <wsdl:part element="impl:formatReturn" name="formatReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="concatRequest">
+
+      <wsdl:part element="impl:in26" name="in0">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="lengthResponse">
+
+      <wsdl:part element="impl:lengthReturn" name="lengthReturn">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="4Request">
+   	<wsdl:part name="parameters" element="impl:4"></wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="4Response">
+   	<wsdl:part name="4Response" element="impl:out"></wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="NewOperationRequest">
+   	<wsdl:part name="parameters" element="impl:NewOperation"></wsdl:part>
+   </wsdl:message>
+   <wsdl:message name="NewOperationResponse">
+   	<wsdl:part name="NewOperationResponse" element="impl:out1"></wsdl:part>
+   </wsdl:message>
+   <wsdl:portType name="String">
+
+      <wsdl:operation name="equals" parameterOrder="in0">
+
+         <wsdl:input message="impl:equalsRequest" name="equalsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:equalsResponse" name="equalsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="toString">
+
+         <wsdl:input message="impl:toStringRequest" name="toStringRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:toStringResponse" name="toStringResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="hashCode">
+
+         <wsdl:input message="impl:hashCodeRequest" name="hashCodeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:hashCodeResponse" name="hashCodeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="compareTo" parameterOrder="in0">
+
+         <wsdl:input message="impl:compareToRequest" name="compareToRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:compareToResponse" name="compareToResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="compareTo" parameterOrder="in0">
+
+         <wsdl:input message="impl:compareToRequest1" name="compareToRequest1">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:compareToResponse1" name="compareToResponse1">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="indexOf" parameterOrder="in0">
+
+         <wsdl:input message="impl:indexOfRequest" name="indexOfRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:indexOfResponse" name="indexOfResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="indexOf" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:indexOfRequest1" name="indexOfRequest1">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:indexOfResponse1" name="indexOfResponse1">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="indexOf" parameterOrder="in0">
+
+         <wsdl:input message="impl:indexOfRequest2" name="indexOfRequest2">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:indexOfResponse2" name="indexOfResponse2">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="indexOf" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:indexOfRequest3" name="indexOfRequest3">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:indexOfResponse3" name="indexOfResponse3">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="valueOf" parameterOrder="in0">
+
+         <wsdl:input message="impl:valueOfRequest" name="valueOfRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:valueOfResponse" name="valueOfResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="valueOf" parameterOrder="in0">
+
+         <wsdl:input message="impl:valueOfRequest1" name="valueOfRequest1">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:valueOfResponse1" name="valueOfResponse1">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="valueOf" parameterOrder="in0">
+
+         <wsdl:input message="impl:valueOfRequest2" name="valueOfRequest2">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:valueOfResponse2" name="valueOfResponse2">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="valueOf" parameterOrder="in0">
+
+         <wsdl:input message="impl:valueOfRequest3" name="valueOfRequest3">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:valueOfResponse3" name="valueOfResponse3">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="valueOf" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:valueOfRequest4" name="valueOfRequest4">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:valueOfResponse4" name="valueOfResponse4">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="valueOf" parameterOrder="in0">
+
+         <wsdl:input message="impl:valueOfRequest5" name="valueOfRequest5">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:valueOfResponse5" name="valueOfResponse5">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="valueOf" parameterOrder="in0">
+
+         <wsdl:input message="impl:valueOfRequest6" name="valueOfRequest6">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:valueOfResponse6" name="valueOfResponse6">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="valueOf" parameterOrder="in0">
+
+         <wsdl:input message="impl:valueOfRequest7" name="valueOfRequest7">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:valueOfResponse7" name="valueOfResponse7">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="valueOf" parameterOrder="in0">
+
+         <wsdl:input message="impl:valueOfRequest8" name="valueOfRequest8">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:valueOfResponse8" name="valueOfResponse8">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="charAt" parameterOrder="in0">
+
+         <wsdl:input message="impl:charAtRequest" name="charAtRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:charAtResponse" name="charAtResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="codePointAt" parameterOrder="in0">
+
+         <wsdl:input message="impl:codePointAtRequest" name="codePointAtRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:codePointAtResponse" name="codePointAtResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="codePointBefore" parameterOrder="in0">
+
+         <wsdl:input message="impl:codePointBeforeRequest" name="codePointBeforeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:codePointBeforeResponse" name="codePointBeforeResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="codePointCount" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:codePointCountRequest" name="codePointCountRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:codePointCountResponse" name="codePointCountResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="compareToIgnoreCase" parameterOrder="in0">
+
+         <wsdl:input message="impl:compareToIgnoreCaseRequest" name="compareToIgnoreCaseRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:compareToIgnoreCaseResponse" name="compareToIgnoreCaseResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="concat" parameterOrder="in0">
+
+         <wsdl:input message="impl:concatRequest" name="concatRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:concatResponse" name="concatResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="contains" parameterOrder="in0">
+
+         <wsdl:input message="impl:containsRequest" name="containsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:containsResponse" name="containsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="contentEquals" parameterOrder="in0">
+
+         <wsdl:input message="impl:contentEqualsRequest" name="contentEqualsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:contentEqualsResponse" name="contentEqualsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="contentEquals" parameterOrder="in0">
+
+         <wsdl:input message="impl:contentEqualsRequest1" name="contentEqualsRequest1">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:contentEqualsResponse1" name="contentEqualsResponse1">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="copyValueOf" parameterOrder="in0">
+
+         <wsdl:input message="impl:copyValueOfRequest" name="copyValueOfRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:copyValueOfResponse" name="copyValueOfResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="copyValueOf" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:copyValueOfRequest1" name="copyValueOfRequest1">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:copyValueOfResponse1" name="copyValueOfResponse1">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="endsWith" parameterOrder="in0">
+
+         <wsdl:input message="impl:endsWithRequest" name="endsWithRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:endsWithResponse" name="endsWithResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="equalsIgnoreCase" parameterOrder="in0">
+
+         <wsdl:input message="impl:equalsIgnoreCaseRequest" name="equalsIgnoreCaseRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:equalsIgnoreCaseResponse" name="equalsIgnoreCaseResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="format" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:formatRequest" name="formatRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:formatResponse" name="formatResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="format" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:formatRequest1" name="formatRequest1">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:formatResponse1" name="formatResponse1">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBytes" parameterOrder="in0">
+
+         <wsdl:input message="impl:getBytesRequest" name="getBytesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getBytesResponse" name="getBytesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBytes" parameterOrder="in0 in1 in2 in3">
+
+         <wsdl:input message="impl:getBytesRequest1" name="getBytesRequest1">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getBytesResponse1" name="getBytesResponse1">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBytes">
+
+         <wsdl:input message="impl:getBytesRequest2" name="getBytesRequest2">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getBytesResponse2" name="getBytesResponse2">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBytes" parameterOrder="in0">
+
+         <wsdl:input message="impl:getBytesRequest3" name="getBytesRequest3">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getBytesResponse3" name="getBytesResponse3">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getChars" parameterOrder="in0 in1 in2 in3">
+
+         <wsdl:input message="impl:getCharsRequest" name="getCharsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getCharsResponse" name="getCharsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="intern">
+
+         <wsdl:input message="impl:internRequest" name="internRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:internResponse" name="internResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isEmpty">
+
+         <wsdl:input message="impl:isEmptyRequest" name="isEmptyRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:isEmptyResponse" name="isEmptyResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="lastIndexOf" parameterOrder="in0">
+
+         <wsdl:input message="impl:lastIndexOfRequest" name="lastIndexOfRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:lastIndexOfResponse" name="lastIndexOfResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="lastIndexOf" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:lastIndexOfRequest1" name="lastIndexOfRequest1">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:lastIndexOfResponse1" name="lastIndexOfResponse1">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="lastIndexOf" parameterOrder="in0">
+
+         <wsdl:input message="impl:lastIndexOfRequest2" name="lastIndexOfRequest2">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:lastIndexOfResponse2" name="lastIndexOfResponse2">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="lastIndexOf" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:lastIndexOfRequest3" name="lastIndexOfRequest3">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:lastIndexOfResponse3" name="lastIndexOfResponse3">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="length">
+
+         <wsdl:input message="impl:lengthRequest" name="lengthRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:lengthResponse" name="lengthResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="matches" parameterOrder="in0">
+
+         <wsdl:input message="impl:matchesRequest" name="matchesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:matchesResponse" name="matchesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="offsetByCodePoints" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:offsetByCodePointsRequest" name="offsetByCodePointsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:offsetByCodePointsResponse" name="offsetByCodePointsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="regionMatches" parameterOrder="in0 in1 in2 in3 in4">
+
+         <wsdl:input message="impl:regionMatchesRequest" name="regionMatchesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:regionMatchesResponse" name="regionMatchesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="regionMatches" parameterOrder="in0 in1 in2 in3">
+
+         <wsdl:input message="impl:regionMatchesRequest1" name="regionMatchesRequest1">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:regionMatchesResponse1" name="regionMatchesResponse1">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="replace" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:replaceRequest" name="replaceRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:replaceResponse" name="replaceResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="replace" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:replaceRequest1" name="replaceRequest1">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:replaceResponse1" name="replaceResponse1">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="replaceAll" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:replaceAllRequest" name="replaceAllRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:replaceAllResponse" name="replaceAllResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="replaceFirst" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:replaceFirstRequest" name="replaceFirstRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:replaceFirstResponse" name="replaceFirstResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="split" parameterOrder="in0">
+
+         <wsdl:input message="impl:splitRequest" name="splitRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:splitResponse" name="splitResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="split" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:splitRequest1" name="splitRequest1">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:splitResponse1" name="splitResponse1">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="startsWith" parameterOrder="in0">
+
+         <wsdl:input message="impl:startsWithRequest" name="startsWithRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:startsWithResponse" name="startsWithResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="startsWith" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:startsWithRequest1" name="startsWithRequest1">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:startsWithResponse1" name="startsWithResponse1">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="subSequence" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:subSequenceRequest" name="subSequenceRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:subSequenceResponse" name="subSequenceResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="substring" parameterOrder="in0">
+
+         <wsdl:input message="impl:substringRequest" name="substringRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:substringResponse" name="substringResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="substring" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:substringRequest1" name="substringRequest1">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:substringResponse1" name="substringResponse1">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="toCharArray">
+
+         <wsdl:input message="impl:toCharArrayRequest" name="toCharArrayRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:toCharArrayResponse" name="toCharArrayResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="toLowerCase">
+
+         <wsdl:input message="impl:toLowerCaseRequest" name="toLowerCaseRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:toLowerCaseResponse" name="toLowerCaseResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="toLowerCase" parameterOrder="in0">
+
+         <wsdl:input message="impl:toLowerCaseRequest1" name="toLowerCaseRequest1">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:toLowerCaseResponse1" name="toLowerCaseResponse1">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="toUpperCase">
+
+         <wsdl:input message="impl:toUpperCaseRequest" name="toUpperCaseRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:toUpperCaseResponse" name="toUpperCaseResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="toUpperCase" parameterOrder="in0">
+
+         <wsdl:input message="impl:toUpperCaseRequest1" name="toUpperCaseRequest1">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:toUpperCaseResponse1" name="toUpperCaseResponse1">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="trim">
+
+         <wsdl:input message="impl:trimRequest" name="trimRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:trimResponse" name="trimResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="фывфы">
+      	<wsdl:input message="impl:4Request"></wsdl:input>
+      	<wsdl:output message="impl:4Response"></wsdl:output>
+      </wsdl:operation>
+   </wsdl:portType>
+
+   <wsdl:binding name="StringSoapBinding" type="impl:String">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="equals">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="equalsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="equalsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="toString">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="toStringRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="toStringResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="hashCode">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="hashCodeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="hashCodeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="compareTo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="compareToRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="compareToResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="compareTo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="compareToRequest1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="compareToResponse1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="indexOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="indexOfRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="indexOfResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="indexOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="indexOfRequest1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="indexOfResponse1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="indexOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="indexOfRequest2">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="indexOfResponse2">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="indexOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="indexOfRequest3">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="indexOfResponse3">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="valueOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="valueOfRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="valueOfResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="valueOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="valueOfRequest1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="valueOfResponse1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="valueOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="valueOfRequest2">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="valueOfResponse2">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="valueOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="valueOfRequest3">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="valueOfResponse3">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="valueOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="valueOfRequest4">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="valueOfResponse4">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="valueOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="valueOfRequest5">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="valueOfResponse5">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="valueOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="valueOfRequest6">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="valueOfResponse6">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="valueOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="valueOfRequest7">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="valueOfResponse7">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="valueOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="valueOfRequest8">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="valueOfResponse8">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="charAt">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="charAtRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="charAtResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="codePointAt">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="codePointAtRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="codePointAtResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="codePointBefore">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="codePointBeforeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="codePointBeforeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="codePointCount">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="codePointCountRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="codePointCountResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="compareToIgnoreCase">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="compareToIgnoreCaseRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="compareToIgnoreCaseResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="concat">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="concatRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="concatResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="contains">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="containsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="containsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="contentEquals">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="contentEqualsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="contentEqualsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="contentEquals">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="contentEqualsRequest1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="contentEqualsResponse1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="copyValueOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="copyValueOfRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="copyValueOfResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="copyValueOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="copyValueOfRequest1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="copyValueOfResponse1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="endsWith">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="endsWithRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="endsWithResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="equalsIgnoreCase">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="equalsIgnoreCaseRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="equalsIgnoreCaseResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="format">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="formatRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="formatResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="format">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="formatRequest1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="formatResponse1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBytes">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getBytesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getBytesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBytes">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getBytesRequest1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getBytesResponse1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBytes">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getBytesRequest2">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getBytesResponse2">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBytes">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getBytesRequest3">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getBytesResponse3">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getChars">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCharsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCharsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="intern">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="internRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="internResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isEmpty">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="isEmptyRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="isEmptyResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="lastIndexOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="lastIndexOfRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="lastIndexOfResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="lastIndexOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="lastIndexOfRequest1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="lastIndexOfResponse1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="lastIndexOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="lastIndexOfRequest2">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="lastIndexOfResponse2">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="lastIndexOf">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="lastIndexOfRequest3">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="lastIndexOfResponse3">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="length">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="lengthRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="lengthResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="matches">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="matchesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="matchesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="offsetByCodePoints">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="offsetByCodePointsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="offsetByCodePointsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="regionMatches">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="regionMatchesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="regionMatchesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="regionMatches">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="regionMatchesRequest1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="regionMatchesResponse1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="replace">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="replaceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="replaceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="replace">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="replaceRequest1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="replaceResponse1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="replaceAll">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="replaceAllRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="replaceAllResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="replaceFirst">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="replaceFirstRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="replaceFirstResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="split">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="splitRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="splitResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="split">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="splitRequest1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="splitResponse1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="startsWith">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="startsWithRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="startsWithResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="startsWith">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="startsWithRequest1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="startsWithResponse1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="subSequence">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="subSequenceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="subSequenceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="substring">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="substringRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="substringResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="substring">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="substringRequest1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="substringResponse1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="toCharArray">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="toCharArrayRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="toCharArrayResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="toLowerCase">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="toLowerCaseRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="toLowerCaseResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="toLowerCase">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="toLowerCaseRequest1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="toLowerCaseResponse1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="toUpperCase">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="toUpperCaseRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="toUpperCaseResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="toUpperCase">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="toUpperCaseRequest1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="toUpperCaseResponse1">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="trim">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="trimRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="trimResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="StringService">
+
+      <wsdl:port binding="impl:StringSoapBinding" name="String">
+
+         <wsdlsoap:address location="http://localhost:8080/Numerator2/services/String"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
