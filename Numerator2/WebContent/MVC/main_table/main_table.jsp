@@ -7,8 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1><%
-				/* 		if(!SelectedItem.equals("")){
+<h3>mvc</h3>
+	<%
+				 		if(!SelectedItem.equals("")){
 							ExplodedOBOZ = num.ExplodeOBOZ(SelectedItem);
 							temp = ExplodedOBOZ.split(delimiter);
 							OBOZ_PREFIX = temp[0];
@@ -20,12 +21,11 @@
 							Type = "3";
 							 
 							out.println(
-										sql.GetProductFirstLevelSTRING(OBOZ_PREFIX,OBOZ_FIRST_NUM,OBOZ_SECOND_NUM,OBOZ_THERD_NUM,OBOZ_POSTFIX,Type)
+										sql.GetProductFirstLevelSTRING(SelectedItem, TrustedUsers, full_access, OBOZ_PREFIX,OBOZ_FIRST_NUM,OBOZ_SECOND_NUM,OBOZ_THERD_NUM,OBOZ_POSTFIX,Type)
 				 						);
 				 		
-				 		};*/
+				 		};
 				%>
-				//00000000000000000000000000000000
-	</h1>
+<h3>end_mvc</h3>
 </body>
 </html>

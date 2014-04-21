@@ -593,6 +593,10 @@ function StatusChange(oboz){
 					out.println("<h1>ƒетали и —борочные единицы </h1>");
 				%>
 				
+				
+				<%@ include file="/MVC/main_table/main_table.jsp" %>
+				
+				
 				<div id="container" style="width:95%">
 					<table width=60% cellpadding="0" cellspacing="0" border="0" id="MainTableASM"  class="display" width="100%">
 					<thead>
@@ -649,6 +653,7 @@ function StatusChange(oboz){
 								out.println("<img src=\"images/Assembly_litle1.png\"></img>");
 							else
 								out.println("<img src=\"images/Part_litle1.png\"></img>");
+							
 							//обозначение
 							if((sql.rs.getString("OBOZ_THERD_NUM").charAt(sql.rs.getString("OBOZ_THERD_NUM").length()-1) == '0') &&
 							   (sql.rs.getString("OBOZ_THERD_NUM").charAt(sql.rs.getString("OBOZ_THERD_NUM").length()-2) == '0') &&	
@@ -656,7 +661,10 @@ function StatusChange(oboz){
 								out.println("<A HREF = \"index.jsp?SelectedItem=" + sql.rs.getString("OBOZNACHENIE") + "\">" + sql.rs.getString("OBOZNACHENIE") + "</a>");
 							else
 								out.println(sql.rs.getString("OBOZNACHENIE"));
+							
 							out.println("</td>");
+							
+							
 							out.println("<td align=center>");
 							if(TrustedUsers.contains(sql.rs.getString("FULLNAME")) | full_access == true){
 								URL = "edit.jsp?";
@@ -702,6 +710,7 @@ function StatusChange(oboz){
 							}else{
 							}
 							out.println("</td>");
+							
 							out.println("<td>" + sql.rs.getString("NAIMENOVANIE") + "</td>");
 							if(sql.rs.getString("OBOZ_THERD_NUM").charAt(sql.rs.getString("OBOZ_THERD_NUM").length()-1) == '0')
 								out.println("<td>—борка</td>");
@@ -761,7 +770,7 @@ function StatusChange(oboz){
 							//количество в машине
 							if(sql.rs.getString("M_COUNT") != null)
 								out.println("<td>" + sql.rs.getString("M_COUNT") + "</td>");
-							else
+						 	else
 								out.println("<td></td>");
 							//масса
 							if(sql.rs.getString("MASS") != null)

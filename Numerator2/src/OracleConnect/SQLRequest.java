@@ -1,8 +1,10 @@
 package OracleConnect;
 
+import java.net.URLEncoder;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Formatter;
 import java.util.ResourceBundle;
@@ -756,7 +758,7 @@ public class SQLRequest {
 
 		}
 	
-	public String GetProductFirstLevelSTRING (String OBOZ_PREFIX, String OBOZ_FIRST_NUM, String OBOZ_SECOND_NUM, String OBOZ_THERD_NUM, String OBOZ_POSTFIX, String TYPE) throws Exception{
+	public String GetProductFirstLevelSTRING(String SelectedItem,ArrayList<String> TrustedUsers,boolean full_access,  String OBOZ_PREFIX, String OBOZ_FIRST_NUM, String OBOZ_SECOND_NUM, String OBOZ_THERD_NUM, String OBOZ_POSTFIX, String TYPE) throws Exception{
 		/*OBOZ_PREFIX     = " « -5-";
 		OBOZ_FIRST_NUM  = "01";
 		OBOZ_SECOND_NUM = "20";
@@ -849,34 +851,114 @@ out+=("<thead>");
 	out+=("</tr>");  
 out+=("</thead>");  
 out+=("<tbody>");  
-		  while(rs.next()){
-			  out+=("<tr>");
-				  out+=("<td>1" +(rs.getString(1) ==null? "__" : rs.getString(1)) +"</td>");
-				  out+=("<td>2" +(rs.getString(2) ==null? "__" : rs.getString(2)) +"</td>");
-				  out+=("<td>3" +(rs.getString(3) ==null? "__" : rs.getString(3)) +"</td>");
-				  out+=("<td>4" +(rs.getString(4) ==null? "__" : rs.getString(4)) +"</td>");
-				  out+=("<td>5" +(rs.getString(5) ==null? "__" : rs.getString(5)) +"</td>");
-				  out+=("<td>6" +(rs.getString(6) ==null? "__" : rs.getString(6)) +"</td>");
-				  out+=("<td>7" +(rs.getString(7) ==null? "__" : rs.getString(7)) +"</td>");
-				  out+=("<td>8" +(rs.getString(8) ==null? "__" : rs.getString(8)) +"</td>");
-				  out+=("<td>9" +(rs.getString(9) ==null? "__" : rs.getString(9)) +"</td>");
-				  out+=("<td>10"+(rs.getString(10)==null? "__" : rs.getString(10))+"</td>");
-				  out+=("<td>11"+(rs.getString(11)==null? "__" : rs.getString(11))+"</td>");
-				  out+=("<td>12"+(rs.getString(12)==null? "__" : rs.getString(12))+"</td>");
-				  out+=("<td>13"+(rs.getString(13)==null? "__" : rs.getString(13))+"</td>");
-				  out+=("<td>14"+(rs.getString(14)==null? "__" : rs.getString(14))+"</td>");
-				  out+=("<td>15"+(rs.getString(15)==null? "__" : rs.getString(15))+"</td>");
-				  out+=("<td>16"+(rs.getString(16)==null? "__" : rs.getString(16))+"</td>");
-				  out+=("<td>17"+(rs.getString(17)==null? "__" : rs.getString(17))+"</td>");
-				  out+=("<td>18"+(rs.getString(18)==null? "__" : rs.getString(18))+"</td>");
-				  /*out+=("<td>19"+(rs.getString(19)==null? "__" : rs.getString(19))+"</td>");
-				  out+=("<td>20"+(rs.getString(20)==null? "__" : rs.getString(20))+"</td>");
-				  out+=("<td>21"+(rs.getString(21)==null? "__" : rs.getString(21))+"</td>");
-				  out+=("<td>22"+(rs.getString(22)==null? "__" : rs.getString(22))+"</td>");
-				  out+=("<td>23"+(rs.getString(23)==null? "__" : rs.getString(23))+"</td>");
-			 */
-				  out+=("</tr>");
-		  }
+while(rs.next()){
+	 // out+=("<tr>");
+	
+	//цвет в зависимости от статуса
+	switch(rs.getInt("STATUS_ID")){
+	case 1: out+=("<tr class=\"grade1\">"); break;
+	case 2: out+=("<tr class=\"grade2\">"); break;
+	case 3: out+=("<tr class=\"grade3\">"); break;
+	case 4: out+=("<tr class=\"grade4\">"); break;
+	case 6: out+=("<tr class=\"grade6\">"); break;
+	case 7: out+=("<tr class=\"grade7\">"); break;
+	case 8: out+=("<tr class=\"grade8\">"); break;
+	case 9: out+=("<tr class=\"grade9\">"); break;
+	case 10: out+=("<tr class=\"grade10\">"); break;
+	}
+
+	//иконка деталь/сборка
+	  out+=("<td>");
+			if(rs.getString("OBOZ_THERD_NUM").charAt(rs.getString("OBOZ_THERD_NUM").length()-1) == '0')
+			out+=("<img src=\"images/Assembly_litle1.png\"></img>");
+			else
+			out+=("<img src=\"images/Part_litle1.png\"></img>");		
+		    //обозначение
+		    if(
+		    (rs.getString("OBOZ_THERD_NUM").charAt(rs.getString("OBOZ_THERD_NUM").length()-1) == '0') &&
+		    (rs.getString("OBOZ_THERD_NUM").charAt(rs.getString("OBOZ_THERD_NUM").length()-2) == '0') &&	
+		    (rs.getString("OBOZ_THERD_NUM").charAt(rs.getString("OBOZ_THERD_NUM").length()-3) == '0'))
+				out+=("<A HREF = \"index.jsp?SelectedItem=" + rs.getString("OBOZNACHENIE") + "\">" + rs.getString("OBOZNACHENIE") + "</a>");
+		    else
+				out+=(rs.getString("OBOZNACHENIE"));		
+	  out+=("</td>");	
+  //  out+=("<td>" +(rs.getString(1) ==null? "__" : rs.getString(1)) +"</td>");
+
+	  out+=("<td>");		  
+	  String URL="";
+		if(TrustedUsers.contains(rs.getString("FULLNAME")) | full_access == true){
+			URL = "edit.jsp?";			
+			//??? кос€чил ??? ??? OBOZNACHENIE & SelectedItem ???
+			if(rs.getString("OBOZNACHENIE") != null && !rs.getString("OBOZNACHENIE").equals(null))
+			URL += "SelectedItem=" + URLEncoder.encode(SelectedItem,"windows-1251");			
+			if(rs.getString("GENERAL_ID") != null || !rs.getString("GENERAL_ID").equals(null) )
+			URL += "&ID=" + URLEncoder.encode(new String(rs.getString("GENERAL_ID").getBytes("windows-1251")),"windows-1251");			
+			if(rs.getString("OBOZNACHENIE") != null && !rs.getString("OBOZNACHENIE").equals(null))
+			URL += "&NEWOBOZ=" + URLEncoder.encode(new String(rs.getString("OBOZNACHENIE").getBytes("windows-1251")),"windows-1251");			
+			if(rs.getString("NAIMENOVANIE") != null && !rs.getString("NAIMENOVANIE").equals(null))
+			URL += "&NAIM=" + URLEncoder.encode(new String(rs.getString("NAIMENOVANIE").getBytes("windows-1251")),"windows-1251");
+			if(rs.getString("PRIMENAETSA") != null && !rs.getString("PRIMENAETSA").equals(null))
+			URL += "&VHODIMOST=" + URLEncoder.encode(new String(rs.getString("PRIMENAETSA").getBytes("windows-1251")),"windows-1251");
+			if(rs.getString("UZ_COUNT") != null && !rs.getString("UZ_COUNT").equals(null))
+			URL += "&UZ_COUNT=" + URLEncoder.encode(new String(rs.getString("UZ_COUNT").getBytes("windows-1251")),"windows-1251");
+			if(rs.getString("M_COUNT") != null && !rs.getString("M_COUNT").equals(null))
+			URL += "&M_COUNT=" + URLEncoder.encode(new String(rs.getString("M_COUNT").getBytes("windows-1251")),"windows-1251");
+			if(rs.getString("STATUS") != null && !rs.getString("STATUS").equals(null))
+			URL += "&STATUS=" + URLEncoder.encode(new String(rs.getString("STATUS").getBytes("windows-1251")),"windows-1251");
+			if(rs.getString("FULLNAME") != null && !rs.getString("FULLNAME").equals(null))
+			URL += "&NEWFULLNAME=" + URLEncoder.encode(new String(rs.getString("FULLNAME").getBytes("windows-1251")),"windows-1251");			
+			if(rs.getString("acad_fullname") != null && !rs.getString("acad_fullname").equals(null))
+			URL += "&ACADNEWFULLNAME=" + URLEncoder.encode(new String(rs.getString("acad_fullname").getBytes("windows-1251")),"windows-1251");			
+			if(rs.getString("MASS") != null && !rs.getString("MASS").equals(null))
+			URL += "&MASS=" + URLEncoder.encode(new String(rs.getString("MASS").getBytes("windows-1251")),"windows-1251");
+			if(rs.getString("FORMAT") != null && !rs.getString("FORMAT").equals(null))
+			URL += "&FORMAT=" + URLEncoder.encode(new String(rs.getString("FORMAT").getBytes("windows-1251")),"windows-1251");
+			if(rs.getString("MATERIAL") != null && !rs.getString("MATERIAL").equals(null))
+			URL += "&MATERIAL=" + URLEncoder.encode(new String(rs.getString("MATERIAL").getBytes("windows-1251")),"windows-1251");
+			if(rs.getString("A1_COUNT") != null && !rs.getString("A1_COUNT").equals(null))
+			URL += "&A1_COUNT=" + URLEncoder.encode(new String(rs.getString("A1_COUNT").getBytes("windows-1251")),"windows-1251");
+			if(rs.getString("A4_COUNT") != null && !rs.getString("A4_COUNT").equals(null))
+			URL += "&A4_COUNT=" + URLEncoder.encode(new String(rs.getString("A4_COUNT").getBytes("windows-1251")),"windows-1251");
+			if(rs.getString("AUTOCAD") != null && !rs.getString("AUTOCAD").equals(null))
+			URL += "&AUTOCAD=" + URLEncoder.encode(new String(rs.getString("AUTOCAD").getBytes("windows-1251")),"windows-1251");			
+			//??? кос€чил ???
+			if(rs.getString("PROE") != null && !rs.getString("PROE").equals(null))
+			URL += "&PROE=" + URLEncoder.encode(new String (rs.getString("PROE").getBytes("windows-1251")),"windows-1251");
+			if(rs.getString("NOTE") != null && !rs.getString("NOTE").equals(null))
+			URL += "&Note=" + URLEncoder.encode(new String(rs.getString("NOTE").getBytes("windows-1251")),"windows-1251");
+			System.out.println("ERROR vvator");
+			out+=("<a href='" + URL + "'><img src='images/edit.png' border='0' width='24' height='24' title='–едактирование'></a>");
+			out+=("<a href='Delete.jsp?SelectedItem=" + SelectedItem + "&OBOZ=" + rs.getString("OBOZNACHENIE") + "'><img src='images/delete.png' border='0' width='24' height='24' title='”даление'></a>");
+			out+=("<img onClick=\"show_history('" + rs.getString("OBOZNACHENIE") + "')\" style='cursor: help;' src='images/history.png' border='0' width='24' height='24' title='»стори€ изменений'>");
+		}else{
+		}
+	  out+=("</td>");	  
+	  //out+=("<td>" +(rs.getString(2) ==null? "__" : rs.getString(2)) +"</td>");
+	  
+	  out+=("<td>" +(rs.getString(3) ==null? "__" : rs.getString(3)) +"</td>");
+	  out+=("<td>" +(rs.getString(4) ==null? "__" : rs.getString(4)) +"</td>");
+	  out+=("<td>" +(rs.getString(5) ==null? "__" : rs.getString(5)) +"</td>");
+	  out+=("<td>" +(rs.getString(6) ==null? "__" : rs.getString(6)) +"</td>");
+	  out+=("<td>" +(rs.getString(7) ==null? "__" : rs.getString(7)) +"</td>");
+	  out+=("<td>" +(rs.getString(8) ==null? "__" : rs.getString(8)) +"</td>");
+	  out+=("<td>" +(rs.getString(9) ==null? "__" : rs.getString(9)) +"</td>");
+	  out+=("<td>"+(rs.getString(10)==null? "__" : rs.getString(10))+"</td>");
+	  out+=("<td>"+(rs.getString(11)==null? "__" : rs.getString(11))+"</td>");
+	  out+=("<td>"+(rs.getString(12)==null? "__" : rs.getString(12))+"</td>");
+	  out+=("<td>"+(rs.getString(13)==null? "__" : rs.getString(13))+"</td>");
+	  out+=("<td>"+(rs.getString(14)==null? "__" : rs.getString(14))+"</td>");
+	  out+=("<td>"+(rs.getString(15)==null? "__" : rs.getString(15))+"</td>");
+	  out+=("<td>"+(rs.getString(16)==null? "__" : rs.getString(16))+"</td>");
+	  out+=("<td>"+(rs.getString(17)==null? "__" : rs.getString(17))+"</td>");
+	  out+=("<td>"+(rs.getString(18)==null? "__" : rs.getString(18))+"</td>");
+	  /*out+=("<td>19"+(rs.getString(19)==null? "__" : rs.getString(19))+"</td>");
+	  out+=("<td>20"+(rs.getString(20)==null? "__" : rs.getString(20))+"</td>");
+	  out+=("<td>21"+(rs.getString(21)==null? "__" : rs.getString(21))+"</td>");
+	  out+=("<td>22"+(rs.getString(22)==null? "__" : rs.getString(22))+"</td>");
+	  out+=("<td>23"+(rs.getString(23)==null? "__" : rs.getString(23))+"</td>");
+ */
+	  out+=("</tr>");
+}
 out+=("</tbody>");		  
 out+=("</table>");
 		 
