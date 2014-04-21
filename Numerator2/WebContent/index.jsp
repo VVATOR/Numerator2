@@ -209,7 +209,8 @@
 				sOut += '</table>';
 				
 				return sOut;
-			}			
+			}
+			
 
 			
 			$(document).ready(function() {

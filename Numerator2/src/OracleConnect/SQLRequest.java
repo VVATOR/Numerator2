@@ -1854,11 +1854,9 @@ out+=("</table>");
 				+ "   		  		n.OBOZ_THERD_NUM|| "
 				+ "    		  		n.OBOZ_POSTFIX)"
 				+ "            ) like '"+oboznachenie+"%' ";
-			System.out.println(" oboznachenie: "+oboznachenie);
 		stmt.setQueryTimeout(QUERY_TIMEOUT);
 		rs=stmt.executeQuery(sql);
-		if(rs.next()){
-			System.out.println(" Номер уже был использован пользователем: "+rs.getString(1));
+		if(rs.next()){			
 			return "<span class='status-nomera-occupaied'>Номер уже был использован пользователем: "+rs.getString(1)+"</span>";
 		}
 		return "<span class='status-nomera-free'>Номер свободен</span>";
