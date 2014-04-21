@@ -9,10 +9,10 @@
   //создаем объект для БД
   SQLRequest sql = new SQLRequest();
   //выполняем запрос
-  sql.occupied(QString);
+ // sql.occupied1(QString);
   //идем по записям
  
-	  out.println(sql.occupied(QString).replaceAll("\"","'") + "\n");
+	  out.println(sql.occupied1(QString).replaceAll("\"","'") + "\n");
 	 
   sql.Disconnect();
  %>

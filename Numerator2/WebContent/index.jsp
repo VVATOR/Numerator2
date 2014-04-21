@@ -51,8 +51,10 @@
  String DEPARTMENT = "";
  if(session.getAttribute("DEPARTMENT") != null) DEPARTMENT = session.getAttribute("DEPARTMENT").toString();				//Отдел
  String SelectedItem="";
- if(request.getParameter("SelectedItem") != null)
+ if(request.getParameter("SelectedItem") != null){
  	 SelectedItem = new String (request.getParameter("SelectedItem").getBytes("ISO-8859-1"));
+ }
+ 
  String Action="";
  if(request.getParameter("Action") != null)
 	 Action = new String (request.getParameter("Action").getBytes("ISO-8859-1"));
@@ -183,7 +185,7 @@
 		StatusColors.add(sql.rs.getString("COLOR"));
 	}
  //--------------------------------------------------------------------------------
-%>
+%> 
 			var oTable;
 
 			/* Formating function for row details */
@@ -207,92 +209,106 @@
 				sOut += '</table>';
 				
 				return sOut;
-			}
+			}			
+
 			
 			$(document).ready(function() {
-				/*
-				 * Insert a 'details' column to the table
-				 */
-				var nCloneTh = document.createElement( 'th' );
-				var nCloneTd = document.createElement( 'td' );
-				nCloneTd.innerHTML = '<img src="images/details_open.png">';
-				nCloneTd.className = "center";
-				
-				$('#MainTableASM thead tr').each( function () {
-					this.insertBefore( nCloneTh, this.childNodes[0] );
-				} );
-				
-				$('#MainTableASM tbody tr').each( function () {
-					this.insertBefore(  nCloneTd.cloneNode( true ), this.childNodes[0] );
-				} );
-				
-				/*
-				 * Initialse DataTables, with no sorting on the 'details' column
-				 */
-				oTable = $('#MainTableASM').dataTable( {
-					"aoColumns": [
-									{ "bSortable": false },
-									null, 					 /* Обозначение */
-									null, 					 /* Действия */
-									null, 					 /* Наименование */
-									null, 					 /* Тип */
-									null, 					 /* Первичная применяемость */
-									null,					 /* Исполнитель */  
-									null,					 /* Статус */ 
-									{ "bVisible":    true  },/* Разработчик чертежа */  
-									{ "bVisible":    false },/* Материал */ 
-									{ "bVisible":    false },/* Количество в узле */  
-									{ "bVisible":    false },/* Количество в машине */ 
-									{ "bVisible":    false },/* Масса */  
-									{ "bVisible":    false },/* Формат */  
-									{ "bVisible":    false },/* Количество А1 */  
-									{ "bVisible":    false },/* Количество А4 */ 
-									{ "bVisible":    false },/* Модель CREO */ 
-									{ "bVisible":    false },/* Чертеж AutoCAD */ 
-									{ "bVisible":    false } /* Примечание */ 
-								],
-					"oLanguage": {
-						"sLengthMenu": "Показывать _MENU_ записей на странице",
-						"sZeroRecords": "Извините, ничего не найдено",
-						"sInfo": "Показано с _START_ по _END_ из _TOTAL_ записей",
-						"sInfoEmtpy": "Показано с 0 по 0 из 0 записей",
-						"sInfoFiltered": "(выбрано из _MAX_ записей)",
-						"oPaginate": {
-							"sFirst":    "Первая",
-							"sPrevious": "Предыдущая",
-							"sNext":     "Следующая",
-							"sLast":     "Последняя"
-						},
-						"sSearch": "Поиск:",
-						"sProcessing": "Ожидайте..."
-						
-					},
-					"sScrollY": "580px",
-					"bPaginate": false
-				});
-				
-				/* Add event listener for opening and closing details
-				 * Note that the indicator for showing which row is open is not controlled by DataTables,
-				 * rather it is done here
-				 */
-				$('td img', oTable.fnGetNodes() ).each( function () {
-					$(this).click( function () {
-						var nTr = this.parentNode.parentNode;
-						if ( this.src.match('images/details_close.png') )
-						{
-							/* This row is already open - close it */
-							this.src = "images/details_open.png";
-							oTable.fnClose( nTr );
-						} else
-						if ( this.src.match('images/details_open.png') )
-						{
-							/* Open this row */
-							this.src = "images/details_close.png";
-							oTable.fnOpen( nTr, fnFormatDetails(nTr), 'details' );
-						}
+				try{	
+					/*
+					 * Insert a 'details' column to the table
+					 */				
+					var nCloneTh = document.createElement( 'th' );
+					var nCloneTd = document.createElement( 'td' );
+					nCloneTd.innerHTML = '<img src="images/details_open.png">';
+					nCloneTd.className = "center";
+					
+					$('#MainTableASM thead tr').each( function () {
+						this.insertBefore( nCloneTh, this.childNodes[0] );
 					} );
-				} );
-			} );
+					
+					$('#MainTableASM tbody tr').each( function () {
+						this.insertBefore(  nCloneTd.cloneNode( true ), this.childNodes[0] );
+					} );
+					
+					/*
+					 * Initialse DataTables, with no sorting on the 'details' column
+					 */
+					oTable = $('#MainTableASM').dataTable( {
+						"aoColumns": [
+										{ "bSortable": false },
+										null, 					 /* Обозначение */
+										null, 					 /* Действия */
+										null, 					 /* Наименование */
+										null, 					 /* Тип */
+										null, 					 /* Первичная применяемость */
+										null,					 /* Исполнитель */  
+										null,					 /* Статус */ 
+										{ "bVisible":    true  },/* Разработчик чертежа */  
+										{ "bVisible":    false },/* Материал */ 
+										{ "bVisible":    false },/* Количество в узле */  
+										{ "bVisible":    false },/* Количество в машине */ 
+										{ "bVisible":    false },/* Масса */  
+										{ "bVisible":    false },/* Формат */  
+										{ "bVisible":    false },/* Количество А1 */  
+										{ "bVisible":    false },/* Количество А4 */ 
+										{ "bVisible":    false },/* Модель CREO */ 
+										{ "bVisible":    false },/* Чертеж AutoCAD */ 
+										{ "bVisible":    false } /* Примечание */ 
+									],
+						"oLanguage": {
+							"sLengthMenu": "Показывать _MENU_ записей на странице",
+							"sZeroRecords": "Извините, ничего не найдено",
+							"sInfo": "Показано с _START_ по _END_ из _TOTAL_ записей",
+							"sInfoEmtpy": "Показано с 0 по 0 из 0 записей",
+							"sInfoFiltered": "(выбрано из _MAX_ записей)",
+							"oPaginate": {
+								"sFirst":    "Первая",
+								"sPrevious": "Предыдущая",
+								"sNext":     "Следующая",
+								"sLast":     "Последняя",
+							},
+							"sSearch": "Поиск:",
+							"sProcessing": "Ожидайте...",							
+						},
+						"sScrollY": "580px",
+						"bPaginate": false,
+					});
+					
+					/* Add event listener for opening and closing details
+					 * Note that the indicator for showing which row is open is not controlled by DataTables,
+					 * rather it is done here
+					 */
+					$('td img', oTable.fnGetNodes() ).each( function () {
+						$(this).click( function () {
+							var nTr = this.parentNode.parentNode;
+							if ( this.src.match('images/details_close.png') )
+							{
+								/* This row is already open - close it */
+								this.src = "images/details_open.png";
+								oTable.fnClose( nTr );
+							} else
+							if ( this.src.match('images/details_open.png') )
+							{
+								/* Open this row */
+								this.src = "images/details_close.png";
+								oTable.fnOpen( nTr, fnFormatDetails(nTr), 'details' );
+							}
+						} );
+					} );			
+				
+						
+				}catch(e)
+				{
+					// Здесь обработана ошибка javascripta выводящего таблицу с оформлением.
+					// При старте приложения параметры не заполнены и таблица не готова для отображения...
+					// Принудительная обработка ошибки скрипта.
+					$("#container").html("<center><h1>Добро пожаловать в прогрмму Нумератор!</h1></center>");
+				}
+			});
+			
+
+
+			
 </script>
 <script type="text/javascript" language="JavaScript">
  function changeImg1_1(source)
@@ -594,226 +610,10 @@ function StatusChange(oboz){
 				%>
 				
 				
-				<%@ include file="/MVC/main_table/main_table.jsp" %>
-				
+			
 				
 				<div id="container" style="width:95%">
-					<table width=60% cellpadding="0" cellspacing="0" border="0" id="MainTableASM"  class="display" width="100%">
-					<thead>
-					<tr> 
-						<th>Обозначение</th>
-						<th>Действия</th>
-						<th>Наименование</th>
-						<th>Тип</th>
-						<th>Первичная применяемость</th>
-						<th>Исполнитель</th>
-						<th>Статус</th>
-						<th>Разработчик чертежа</th>
-						<th>Материал</th>
-						<th>Количество в узле</th>
-						<th>Количество в машине</th>
-						<th>Масса</th>
-						<th>Формат</th>
-						<th>Количество А1</th>
-						<th>Количество А4</th>
-						<th>Модель CREO</th>
-						<th>Чертеж AutoCAD</th>
-						<th>Примечание</th>  
-					</tr>
-					</thead>
-					<tbody>
-					<%
-					if(!SelectedItem.equals("")){
-						ExplodedOBOZ = num.ExplodeOBOZ(SelectedItem);
-						temp = ExplodedOBOZ.split(delimiter);
-						OBOZ_PREFIX = temp[0];
-						OBOZ_FIRST_NUM = temp[1];
-						OBOZ_SECOND_NUM = temp[2];
-						OBOZ_THERD_NUM = temp[3];
-						if(temp.length == 5) OBOZ_POSTFIX = temp[4];
-						 else OBOZ_POSTFIX = "";
-						Type = "3";
-						sql.GetProductFirstLevel(OBOZ_PREFIX,OBOZ_FIRST_NUM,OBOZ_SECOND_NUM,OBOZ_THERD_NUM,OBOZ_POSTFIX,Type);
-						while(sql.rs.next()){
-							//цвет в зависимости от статуса
-							switch(sql.rs.getInt("STATUS_ID")){
-							case 1: out.println("<tr class=\"grade1\">"); break;
-							case 2: out.println("<tr class=\"grade2\">"); break;
-							case 3: out.println("<tr class=\"grade3\">"); break;
-							case 4: out.println("<tr class=\"grade4\">"); break;
-							case 6: out.println("<tr class=\"grade6\">"); break;
-							case 7: out.println("<tr class=\"grade7\">"); break;
-							case 8: out.println("<tr class=\"grade8\">"); break;
-							case 9: out.println("<tr class=\"grade9\">"); break;
-							case 10: out.println("<tr class=\"grade10\">"); break;
-							}
-							out.println("<td>");
-							//иконка деталь/сборка
-							if(sql.rs.getString("OBOZ_THERD_NUM").charAt(sql.rs.getString("OBOZ_THERD_NUM").length()-1) == '0')
-								out.println("<img src=\"images/Assembly_litle1.png\"></img>");
-							else
-								out.println("<img src=\"images/Part_litle1.png\"></img>");
-							
-							//обозначение
-							if((sql.rs.getString("OBOZ_THERD_NUM").charAt(sql.rs.getString("OBOZ_THERD_NUM").length()-1) == '0') &&
-							   (sql.rs.getString("OBOZ_THERD_NUM").charAt(sql.rs.getString("OBOZ_THERD_NUM").length()-2) == '0') &&	
-							   (sql.rs.getString("OBOZ_THERD_NUM").charAt(sql.rs.getString("OBOZ_THERD_NUM").length()-3) == '0'))
-								out.println("<A HREF = \"index.jsp?SelectedItem=" + sql.rs.getString("OBOZNACHENIE") + "\">" + sql.rs.getString("OBOZNACHENIE") + "</a>");
-							else
-								out.println(sql.rs.getString("OBOZNACHENIE"));
-							
-							out.println("</td>");
-							
-							
-							out.println("<td align=center>");
-							if(TrustedUsers.contains(sql.rs.getString("FULLNAME")) | full_access == true){
-								URL = "edit.jsp?";
-								if(sql.rs.getString("OBOZNACHENIE") != null)
-								URL += "SelectedItem=" + URLEncoder.encode(SelectedItem,"windows-1251");
-								if(sql.rs.getString("GENERAL_ID") != null)
-								URL += "&ID=" + URLEncoder.encode(sql.rs.getString("GENERAL_ID"),"windows-1251");
-								if(sql.rs.getString("OBOZNACHENIE") != null)
-								URL += "&NEWOBOZ=" + URLEncoder.encode(sql.rs.getString("OBOZNACHENIE"),"windows-1251");
-								if(sql.rs.getString("NAIMENOVANIE") != null)
-								URL += "&NAIM=" + URLEncoder.encode(sql.rs.getString("NAIMENOVANIE"),"windows-1251");
-								if(sql.rs.getString("PRIMENAETSA") != null)
-								URL += "&VHODIMOST=" + URLEncoder.encode(sql.rs.getString("PRIMENAETSA"),"windows-1251");
-								if(sql.rs.getString("UZ_COUNT") != null)
-								URL += "&UZ_COUNT=" + URLEncoder.encode(sql.rs.getString("UZ_COUNT"),"windows-1251");
-								if(sql.rs.getString("M_COUNT") != null)
-								URL += "&M_COUNT=" + URLEncoder.encode(sql.rs.getString("M_COUNT"),"windows-1251");
-								if(sql.rs.getString("STATUS") != null)
-								URL += "&STATUS=" + URLEncoder.encode(sql.rs.getString("STATUS"),"windows-1251");
-								if(sql.rs.getString("FULLNAME") != null)
-								URL += "&NEWFULLNAME=" + URLEncoder.encode(sql.rs.getString("FULLNAME"),"windows-1251");
-								if(sql.rs.getString("FULLNAME") != null)
-								URL += "&ACADNEWFULLNAME=" + URLEncoder.encode(sql.rs.getString("acad_fullname"),"windows-1251");
-								if(sql.rs.getString("MASS") != null)
-								URL += "&MASS=" + URLEncoder.encode(sql.rs.getString("MASS"),"windows-1251");
-								if(sql.rs.getString("FORMAT") != null)
-								URL += "&FORMAT=" + URLEncoder.encode(sql.rs.getString("FORMAT"),"windows-1251");
-								if(sql.rs.getString("MATERIAL") != null)
-								URL += "&MATERIAL=" + URLEncoder.encode(sql.rs.getString("MATERIAL"),"windows-1251");
-								if(sql.rs.getString("A1_COUNT") != null)
-								URL += "&A1_COUNT=" + URLEncoder.encode(sql.rs.getString("A1_COUNT"),"windows-1251");
-								if(sql.rs.getString("A4_COUNT") != null)
-								URL += "&A4_COUNT=" + URLEncoder.encode(sql.rs.getString("A4_COUNT"),"windows-1251");
-								if(sql.rs.getString("AUTOCAD") != null)
-								URL += "&AUTOCAD=" + URLEncoder.encode(sql.rs.getString("AUTOCAD"),"windows-1251");
-								if(sql.rs.getString("PROE") != null)
-								URL += "&PROE=" + URLEncoder.encode(sql.rs.getString("PROE"),"windows-1251");
-								if(sql.rs.getString("NOTE") != null)
-								URL += "&Note=" + URLEncoder.encode(sql.rs.getString("NOTE"),"windows-1251");
-								out.println("<a href=\"" + URL + "\"><img src=\"images/edit.png\" border=0 width=24 height=24 title=\"Редактирование\"></img></a>");
-								out.println("<a href=\"Delete.jsp?SelectedItem=" + SelectedItem + "&OBOZ=" + sql.rs.getString("OBOZNACHENIE") + "\"><img src=\"images/delete.png\" border=0 width=24 height=24 title=\"Удаление\"></img></a>");
-								out.println("<img onClick=show_history('" + sql.rs.getString("OBOZNACHENIE") + "') style=\"cursor: help;\" src=\"images/history.png\" border=0 width=24 height=24 title=\"История изменений\"></img>");
-							}else{
-							}
-							out.println("</td>");
-							
-							out.println("<td>" + sql.rs.getString("NAIMENOVANIE") + "</td>");
-							if(sql.rs.getString("OBOZ_THERD_NUM").charAt(sql.rs.getString("OBOZ_THERD_NUM").length()-1) == '0')
-								out.println("<td>Сборка</td>");
-							else{
-								if(sql.rs.getString("OBOZ_THERD_NUM").charAt(0) == '0') out.println("<td>Деталь (не металлическая)</td>");
-								if(sql.rs.getString("OBOZ_THERD_NUM").charAt(0) == '1') out.println("<td>Деталь (серый чугун)</td>");
-								if(sql.rs.getString("OBOZ_THERD_NUM").charAt(0) == '2') out.println("<td>Деталь (высокопрочный чугун)</td>");
-								if(sql.rs.getString("OBOZ_THERD_NUM").charAt(0) == '3') out.println("<td>Деталь (стальное литье)</td>");
-								if(sql.rs.getString("OBOZ_THERD_NUM").charAt(0) == '4') out.println("<td>Деталь (листовая)</td>");
-								if(sql.rs.getString("OBOZ_THERD_NUM").charAt(0) == '5') out.println("<td>Деталь (профиль)</td>");
-								if(sql.rs.getString("OBOZ_THERD_NUM").charAt(0) == '6') out.println("<td>Деталь (круг, паковка)</td>");
-								if(sql.rs.getString("OBOZ_THERD_NUM").charAt(0) == '7') out.println("<td>Деталь (уголок, швеллер)</td>");
-								if(sql.rs.getString("OBOZ_THERD_NUM").charAt(0) == '8') out.println("<td>Деталь (труба)</td>");
-							}
-							out.println("<td>" + sql.rs.getString("PRIMENAETSA") + "</td>");
-							out.println("<td>" + sql.rs.getString("FULLNAME") + "</td>");
-							out.println("<td class=\"center\">");
-							/*switch(sql.rs.getInt("STATUS_ID")){
-							case 1: out.println("<img src=\"images/life_cyle1.png\" border=0></img>"); break;
-							case 2: out.println("<img src=\"images/life_cyle4.png\" border=0></img>"); break;
-							case 3: out.println("<img src=\"images/life_cyle5.png\" border=0></img>"); break;
-							case 4: out.println("<img src=\"images/life_cyle7.png\" border=0></img>"); break;
-							case 6: out.println("<img src=\"images/life_cyle5.png\" border=0></img>"); break;
-							case 7: out.println("<img src=\"images/life_cyle2.png\" border=0></img>"); break;
-							case 8: out.println("<img src=\"images/life_cyle3.png\" border=0></img>"); break;
-							case 9: out.println("<img src=\"images/life_cyle8.png\" border=0></img>"); break;
-							case 10: out.println("<img src=\"images/life_cyle6.png\" border=0></img>"); break;
-							}
-							out.println("<br>");*/
-							if(TrustedUsers.contains(sql.rs.getString("FULLNAME")) | full_access == true){
-								//может менять статус
-								out.println("<select name='" + sql.rs.getString("OBOZNACHENIE") + "' id='" + sql.rs.getString("OBOZNACHENIE") + "' onChange=StatusChange('" + sql.rs.getString("OBOZNACHENIE") + "')>");
-								for(i=0;i<Status.size();i++){
-									if(Status.get(i).equals(sql.rs.getString("STATUS")))
-										out.println("<option selected style=\"background-color: " + StatusColors.get(i) + "\" >" + Status.get(i) + "</option>");
-									else
-										out.println("<option style=\"background-color: " + StatusColors.get(i) + "\" >" + Status.get(i) + "</option>");
-								}
-								out.println(sql.rs.getString("STATUS"));
-								out.println("</select>");
-							} else{
-								//не может менять статус
-								out.println(sql.rs.getString("STATUS"));
-							}
-							out.println("</td>");
-							out.println("<td>"+sql.rs.getString("acad_fullname")+"</td>");
-							//материал
-							if(sql.rs.getString("MATERIAL") != null)
-								out.println("<td>" + sql.rs.getString("MATERIAL") + "</td>");
-							else
-								out.println("<td></td>");
-							//количество в узле
-							if(sql.rs.getString("UZ_COUNT") != null)
-								out.println("<td>" + sql.rs.getString("UZ_COUNT") + "</td>");
-							else
-								out.println("<td></td>");
-							//количество в машине
-							if(sql.rs.getString("M_COUNT") != null)
-								out.println("<td>" + sql.rs.getString("M_COUNT") + "</td>");
-						 	else
-								out.println("<td></td>");
-							//масса
-							if(sql.rs.getString("MASS") != null)
-								out.println("<td>" + sql.rs.getString("MASS") + "</td>");
-							else
-								out.println("<td></td>");
-							//формат
-							if(sql.rs.getString("FORMAT") != null)
-								out.println("<td>" + sql.rs.getString("FORMAT") + "</td>");
-							else
-								out.println("<td></td>");
-							//количество А1
-							if(sql.rs.getString("A1_COUNT") != null)
-								out.println("<td>" + sql.rs.getString("A1_COUNT") + "</td>");
-							else
-								out.println("<td></td>");
-							//количество А4
-							if(sql.rs.getString("A4_COUNT") != null)
-								out.println("<td>" + sql.rs.getString("A4_COUNT") + "</td>");
-							else
-								out.println("<td></td>");
-							//прое
-							if(sql.rs.getString("PROE") != null)
-								out.println("<td><a href=\"Preview.jsp?SelectedItem=" + SelectedItem + "&FILENAME=" + sql.rs.getString("PROE") + "\">" + sql.rs.getString("PROE") + "</a></td>");
-							else
-								out.println("<td></td>");
-							//автокад
-							if(sql.rs.getString("AUTOCAD") != null)
-								out.println("<td><a href=\"file:" + sql.rs.getString("AUTOCAD").replace('\\', '/') + "\">" + sql.rs.getString("AUTOCAD") + "</a></td>");
-							else
-								out.println("<td></td>");
-							//примечание
-							if(sql.rs.getString("NOTE") != null)
-								out.println("<td>" + sql.rs.getString("NOTE") + "</td>");
-							else
-								out.println("<td></td>");
-							out.println("</tr>");
-						}
-					}
-					sql.Disconnect();
-					%>					
-					</tbody>
-					</table>
+					<%@ include file="/MVC/main_table/main_table.jsp" %>				
 				</div>	
 				<!-- Конец основного содержимого -->
 				<form name=changeStatus action=index.jsp>

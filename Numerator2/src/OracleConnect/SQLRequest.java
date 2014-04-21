@@ -1,5 +1,6 @@
 package OracleConnect;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -758,12 +759,8 @@ public class SQLRequest {
 
 		}
 	
-	public String GetProductFirstLevelSTRING(String SelectedItem,ArrayList<String> TrustedUsers,boolean full_access,  String OBOZ_PREFIX, String OBOZ_FIRST_NUM, String OBOZ_SECOND_NUM, String OBOZ_THERD_NUM, String OBOZ_POSTFIX, String TYPE) throws Exception{
-		/*OBOZ_PREFIX     = "КЗК-5-";
-		OBOZ_FIRST_NUM  = "01";
-		OBOZ_SECOND_NUM = "20";
-		OBOZ_THERD_NUM  = "000";
-		*/
+	public String GetProductFirstLevelSTRING(String SelectedItem,ArrayList<String> TrustedUsers,boolean full_access,ArrayList<String> status,ArrayList<String> statusColors, String OBOZ_PREFIX, String OBOZ_FIRST_NUM, String OBOZ_SECOND_NUM, String OBOZ_THERD_NUM, String OBOZ_POSTFIX, String TYPE) throws Exception  {
+	//	OBOZ_PREFIX="0";
 		String out="";
 		  String sql = " SELECT distinct "
 		  		+ "		  		NUM_NUMBERS.ID AS GENERAL_ID,   "
@@ -829,7 +826,7 @@ public class SQLRequest {
 		  
 out+=("<table id='MainTableASM'  class='display' width='100%'>");  
 out+=("<thead>");  
-	out+=("<tr>");   
+	out+=("<tr>");  
 		out+=("<th>Обозначение</th>");  
 		out+=("<th>Действия</th>");  
 		out+=("<th>Наименование</th>");  
@@ -850,7 +847,8 @@ out+=("<thead>");
 		out+=("<th>Примечание</th>  ");  
 	out+=("</tr>");  
 out+=("</thead>");  
-out+=("<tbody>");  
+out+=("<tbody>");
+
 while(rs.next()){
 	 // out+=("<tr>");
 	
@@ -866,7 +864,9 @@ while(rs.next()){
 	case 9: out+=("<tr class=\"grade9\">"); break;
 	case 10: out+=("<tr class=\"grade10\">"); break;
 	}
-
+/////////////////////////////////////////////////////////////////////	
+	
+	
 	//иконка деталь/сборка
 	  out+=("<td>");
 			if(rs.getString("OBOZ_THERD_NUM").charAt(rs.getString("OBOZ_THERD_NUM").length()-1) == '0')
@@ -884,7 +884,7 @@ while(rs.next()){
 	  out+=("</td>");	
   //  out+=("<td>" +(rs.getString(1) ==null? "__" : rs.getString(1)) +"</td>");
 
-	  out+=("<td>");		  
+	  out+=("<td align=center>");		  
 	  String URL="";
 		if(TrustedUsers.contains(rs.getString("FULLNAME")) | full_access == true){
 			URL = "edit.jsp?";			
@@ -926,7 +926,6 @@ while(rs.next()){
 			URL += "&PROE=" + URLEncoder.encode(new String (rs.getString("PROE").getBytes("windows-1251")),"windows-1251");
 			if(rs.getString("NOTE") != null && !rs.getString("NOTE").equals(null))
 			URL += "&Note=" + URLEncoder.encode(new String(rs.getString("NOTE").getBytes("windows-1251")),"windows-1251");
-			System.out.println("ERROR vvator");
 			out+=("<a href='" + URL + "'><img src='images/edit.png' border='0' width='24' height='24' title='Редактирование'></a>");
 			out+=("<a href='Delete.jsp?SelectedItem=" + SelectedItem + "&OBOZ=" + rs.getString("OBOZNACHENIE") + "'><img src='images/delete.png' border='0' width='24' height='24' title='Удаление'></a>");
 			out+=("<img onClick=\"show_history('" + rs.getString("OBOZNACHENIE") + "')\" style='cursor: help;' src='images/history.png' border='0' width='24' height='24' title='История изменений'>");
@@ -935,36 +934,89 @@ while(rs.next()){
 	  out+=("</td>");	  
 	  //out+=("<td>" +(rs.getString(2) ==null? "__" : rs.getString(2)) +"</td>");
 	  
-	  out+=("<td>" +(rs.getString(3) ==null? "__" : rs.getString(3)) +"</td>");
-	  out+=("<td>" +(rs.getString(4) ==null? "__" : rs.getString(4)) +"</td>");
-	  out+=("<td>" +(rs.getString(5) ==null? "__" : rs.getString(5)) +"</td>");
-	  out+=("<td>" +(rs.getString(6) ==null? "__" : rs.getString(6)) +"</td>");
-	  out+=("<td>" +(rs.getString(7) ==null? "__" : rs.getString(7)) +"</td>");
-	  out+=("<td>" +(rs.getString(8) ==null? "__" : rs.getString(8)) +"</td>");
-	  out+=("<td>" +(rs.getString(9) ==null? "__" : rs.getString(9)) +"</td>");
-	  out+=("<td>"+(rs.getString(10)==null? "__" : rs.getString(10))+"</td>");
-	  out+=("<td>"+(rs.getString(11)==null? "__" : rs.getString(11))+"</td>");
-	  out+=("<td>"+(rs.getString(12)==null? "__" : rs.getString(12))+"</td>");
-	  out+=("<td>"+(rs.getString(13)==null? "__" : rs.getString(13))+"</td>");
-	  out+=("<td>"+(rs.getString(14)==null? "__" : rs.getString(14))+"</td>");
-	  out+=("<td>"+(rs.getString(15)==null? "__" : rs.getString(15))+"</td>");
-	  out+=("<td>"+(rs.getString(16)==null? "__" : rs.getString(16))+"</td>");
-	  out+=("<td>"+(rs.getString(17)==null? "__" : rs.getString(17))+"</td>");
-	  out+=("<td>"+(rs.getString(18)==null? "__" : rs.getString(18))+"</td>");
-	  /*out+=("<td>19"+(rs.getString(19)==null? "__" : rs.getString(19))+"</td>");
-	  out+=("<td>20"+(rs.getString(20)==null? "__" : rs.getString(20))+"</td>");
-	  out+=("<td>21"+(rs.getString(21)==null? "__" : rs.getString(21))+"</td>");
-	  out+=("<td>22"+(rs.getString(22)==null? "__" : rs.getString(22))+"</td>");
-	  out+=("<td>23"+(rs.getString(23)==null? "__" : rs.getString(23))+"</td>");
- */
+	  out+=("<td>" +(rs.getString("NAIMENOVANIE") ==null? "" : rs.getString("NAIMENOVANIE")) +"</td>");
+	  
+	  
+	  out+="<td>";
+	  if(rs.getString("OBOZ_THERD_NUM").charAt(rs.getString("OBOZ_THERD_NUM").length()-1) == '0')
+			out+=("Сборка");
+		else{
+			switch(rs.getString("OBOZ_THERD_NUM").charAt(0)){ 
+				case '0': out+=("Деталь (не металлическая)"); break;
+				case '1': out+=("Деталь (серый чугун)"); break;
+				case '2': out+=("Деталь (высокопрочный чугун)"); break;
+				case '3': out+=("Деталь (стальное литье)"); break;
+				case '4': out+=("Деталь (листовая)"); break;
+				case '5': out+=("Деталь (профиль)"); break;
+				case '6': out+=("Деталь (круг, паковка)"); break;
+				case '7': out+=("Деталь (уголок, швеллер)"); break;
+				case '8': out+=("Деталь (труба)"); break;
+				default:  out+="&nbsp;";
+			}
+		}
+	  out+="</td>";
+	  
+	  
+	//  out+=("<td>" +(rs.getString(4) ==null? "__" : rs.getString(4)) +"</td>");
+	  out+=("<td>" +(rs.getString("PRIMENAETSA") ==null? "" : rs.getString("PRIMENAETSA")) +"</td>");
+	  out+=("<td>" +(rs.getString("FULLNAME") ==null? "" : rs.getString("FULLNAME")) +"</td>");
+	  
+	  
+	  
+	  
+	  out+=("<td class='center'>"); 
+	  		//out+=(rs.getString(7) ==null? "__" : rs.getString(7));
+		if(TrustedUsers.contains(rs.getString("FULLNAME")) | full_access == true){
+			//может менять статус
+			out+=("<select name='" + rs.getString("OBOZNACHENIE") + "' id='" + rs.getString("OBOZNACHENIE") + "' onChange=StatusChange('" + rs.getString("OBOZNACHENIE") + "')>");
+			for(int i=0;i<status.size();i++){
+				if(status.get(i).equals(rs.getString("STATUS")))
+					out+=("<option selected style='background-color: " + statusColors.get(i) + "'>" + status.get(i) + "</option>");
+				else
+					out+=("<option style='background-color: " + statusColors.get(i) + "'>" + status.get(i) + "</option>");
+			}
+			out+=(rs.getString("STATUS"));
+			out+=("</select>");
+		} else{
+			//не может менять статус
+			out+=(rs.getString("STATUS"));
+		}	  		
+	  out+="</td>";	  
+	  
+	  out+=("<td>" +(rs.getString("acad_fullname") ==null? "" : rs.getString("acad_fullname")) +"</td>");
+//материал
+	  out+=("<td>" +(rs.getString("MATERIAL") ==null? "" : rs.getString("MATERIAL")) +"</td>");
+//количество в узле
+	  out+=("<td>" +(rs.getString("UZ_COUNT")==null? "" : rs.getString("UZ_COUNT"))+"</td>");
+//количество в машине
+	  out+=("<td>" +(rs.getString("M_COUNT")==null? "" : rs.getString("M_COUNT"))+"</td>");
+//масса
+	  out+=("<td>" +(rs.getString("MASS")==null? "" : rs.getString("MASS"))+"</td>");
+//формат
+	  out+=("<td>" +(rs.getString("FORMAT")==null? "" : rs.getString("FORMAT"))+"</td>");
+	  //количество А1
+	  out+=("<td>" +(rs.getString("A1_COUNT")==null? "" : rs.getString("A1_COUNT"))+"</td>");
+//количество А4
+	  out+=("<td>" +(rs.getString("A4_COUNT")==null? "" : rs.getString("A4_COUNT"))+"</td>");	  
+//прое
+	  out+="<td>";	  		
+	  		out+="<a href=\"Preview.jsp?SelectedItem=" + SelectedItem + "&FILENAME=" + rs.getString("PROE") + "\">" + rs.getString("PROE") + "</a>";
+	  out+="</td>";	  
+//автокад
+	  out+="<td>";
+	  		out+="<a href='file:" + rs.getString("AUTOCAD").replace('\\', '/') + "'>" + rs.getString("AUTOCAD") + "</a>";
+	  out+="</td>";	  
+//примечание
+	  out+=("<td>" +(rs.getString("NOTE")==null? "" : rs.getString("NOTE"))+"</td>");
 	  out+=("</tr>");
 }
 out+=("</tbody>");		  
 out+=("</table>");
 		 
-		  rs.first();
-		  return out;
-		}
+		rs.first();
+	
+		return out;
+	}
 	
 	
 	
@@ -1026,7 +1078,6 @@ out+=("</table>");
 	  if(ObozIsFree){	
 		//если наименование и обозначение н пустые
 		if((!NAIM.equals("")) & (!NEWOBOZ.equals(""))){
-		String NAIMENOVANIE_ID = "";
 		String OBOZ_PREFIX = "";
 		String OBOZ_FIRST_NUM = "";
 		String OBOZ_SECOND_NUM = "";
@@ -1034,11 +1085,8 @@ out+=("</table>");
 		String OBOZ_POSTFIX = "";
 		//проверяем наименование по справочнику, если его там нет то доабвляем
 		sql_1.SearchNaim(NAIM);
-		String NAIM_ID= "";
-		if (sql_1.rs1.next()){
-			 if(sql_1.rs1.getString("ID") != null){
-				 NAIM_ID =sql_1.rs1.getString("ID");
-			 }
+		
+		if (!sql_1.rs1.next()){		
 		}
 		else {
 			 //такого наименования еще нет, добавляем его 
@@ -1362,7 +1410,7 @@ out+=("</table>");
 		  }
 		 }
 		 //смотрим есть ли уже такое значение статуса
-		 boolean findSTATUS = false;
+
 		 String STATUS_ID = "-1";
 		 if(!STATUS.equals("")){
 		  sql_1.SearchStatus(STATUS);
@@ -1372,7 +1420,6 @@ out+=("</table>");
 			 else STATUS_ID = "-1";
 		  }
 		  if(STATUS_ID.equals("-1")) {
-			findSTATUS = true;
 			//если значение новое, то ищем последний ID
 			sql_1.GetLastStatus_Id();
 			int STATUSID_int = -1;
@@ -1576,7 +1623,6 @@ out+=("</table>");
 			  }
 			 }
 			 //смотрим есть ли уже такое значение статуса
-			 boolean findSTATUS = false;
 			 String STATUS_ID = "-1";
 			 if(!STATUS.equals("")){
 			  sql_1.SearchStatus(STATUS);
@@ -1586,7 +1632,6 @@ out+=("</table>");
 				 else STATUS_ID = "-1";
 			  }
 			  if(STATUS_ID.equals("-1")) {
-				findSTATUS = true;
 				//если значение новое, то ищем последний ID
 				sql_1.GetLastStatus_Id();
 				int STATUSID_int = -1;
@@ -1791,7 +1836,7 @@ out+=("</table>");
 	}
 	
 	
-	
+
 	public String occupied(String oboznachenie) throws SQLException{
 		if(Pattern.matches(".*[0-9]{7}.*", oboznachenie)!=true){
 			return "<span class='status-nomera'>заполните обозначение...</span>";
@@ -1810,6 +1855,86 @@ out+=("</table>");
 				+ "    		  		n.OBOZ_POSTFIX)"
 				+ "            ) like '"+oboznachenie+"%' ";
 			System.out.println(" oboznachenie: "+oboznachenie);
+		stmt.setQueryTimeout(QUERY_TIMEOUT);
+		rs=stmt.executeQuery(sql);
+		if(rs.next()){
+			System.out.println(" Номер уже был использован пользователем: "+rs.getString(1));
+			return "<span class='status-nomera-occupaied'>Номер уже был использован пользователем: "+rs.getString(1)+"</span>";
+		}
+		return "<span class='status-nomera-free'>Номер свободен</span>";
+	}
+	
+
+	public String occupied1(String oboznachenie) throws SQLException{
+		if(Pattern.matches(".*[0-9]{7}.*", oboznachenie)!=true){
+			return "<span class='status-nomera'>заполните обозначение...</span>";
+		}
+			
+		
+		//public String GetProductFirstLevelSTRING(String SelectedItem,ArrayList<String> TrustedUsers,boolean full_access,ArrayList<String> status,ArrayList<String> statusColors, String OBOZ_PREFIX, String OBOZ_FIRST_NUM, String OBOZ_SECOND_NUM, String OBOZ_THERD_NUM, String OBOZ_POSTFIX, String TYPE) throws Exception  {
+			//	OBOZ_PREFIX="0";
+				String out="";
+				  String sql = " SELECT distinct "
+					  	+ "		  		USERS.FULLNAME,";						  
+				  	/*	+ "		  		NUM_NUMBERS.ID AS GENERAL_ID,   "
+				  		+ " 	  		NUM_NAIMENOVANIE.NAIMENOVANIE,"
+				  		+ "		  		NUM_NUMBERS.OBOZ_THERD_NUM,"
+				  		+ "		  		REPLACE((NUM_NUMBERS.OBOZ_PREFIX ||"
+				  		+ "		  		NUM_NUMBERS.OBOZ_FIRST_NUM||"
+				  		+ "		  		NUM_NUMBERS.OBOZ_SECOND_NUM ||"
+				  		+ " 	  		NUM_NUMBERS.OBOZ_THERD_NUM ||"
+				  		+ "		  		NUM_NUMBERS.OBOZ_POSTFIX),CHR(0),'')  AS OBOZNACHENIE,"
+				  		+ "		  		NUM_RELATIONS.TYPE,"
+				  		+ "		  		NUM_NUMBERS.PRIMENAETSA ,"
+				  		+ "		  		NUM_RELATIONS.UZ_COUNT,"
+				  		+ "		  		NUM_RELATIONS.PRIM_FOR_ZAIM ,"
+				  		+ "		  		NUM_NUMBERS.M_COUNT ,"
+				  		+ "		  		NUM_MASS.MASS,"
+				  		+ "		  		NUM_FORMAT.FORMAT,"
+				  		+ "		  		NUM_NUMBERS.A1_COUNT,"
+				  		+ "		  		NUM_NUMBERS.A4_COUNT,"
+				  		+ "		  		NUM_NUMBERS.AUTOCAD,"
+				  		+ "		  		NUM_NUMBERS.PROE,"
+				  		+ "		  		NUM_STATUS.ID AS STATUS_ID,"
+				  		+ "		  		STATUS,"
+				  		+ "		  		COLOR,"
+				  		+ "		  		LIFE_CYCLE"
+				  		+ ""
+				  		+ "		  		,MATERIAL"
+				  		+ "             ,NUM_NUMBERS.NOTE,"*/
+				  sql += "             USERS_1.FULLNAME as acad_fullname ";				  
+				  sql += "	FROM ";
+				  sql += "		NUM_NUMBERS ";
+				  sql += "	INNER JOIN  NUM_RELATIONS ON NUM_NUMBERS.ID = NUM_RELATIONS.CHILD_ID ";
+				  sql += "	INNER JOIN  NUM_NUMBERS NUM_NUMBERS_1 ON NUM_RELATIONS.PARENT_ID = NUM_NUMBERS_1.ID ";
+				  sql += "	INNER JOIN USERS ON  NUM_NUMBERS.USER_ID = USERS.ID ";
+				  sql += " INNER JOIN NUM_STATUS ON NUM_NUMBERS.STATUS_ID = NUM_STATUS.ID ";
+				  sql += " LEFT JOIN  NUM_MATERIAL ON NUM_NUMBERS.MATERIAL_ID = NUM_MATERIAL.ID ";
+				  sql += "	LEFT JOIN  NUM_NAIMENOVANIE ON NUM_NUMBERS.NAIMENOVANIE_ID = NUM_NAIMENOVANIE.ID ";
+				  sql += "	LEFT JOIN  NUM_MASS ON NUM_NUMBERS.MASS_ID = NUM_MASS.ID ";
+				  sql += "	LEFT JOIN  NUM_FORMAT ON NUM_NUMBERS.FORMAT_ID = NUM_FORMAT.ID ";
+				  sql += " left JOIN USERS USERS_1 ON NUM_NUMBERS.AUTOCAD_USER_ID=USERS_1.ID ";
+				  sql += "      where (	trim(NUM_NUMBERS.OBOZ_PREFIX||";
+				  sql += " 		  			 NUM_NUMBERS.OBOZ_FIRST_NUM|| ";
+				  sql += "   		  		 NUM_NUMBERS.OBOZ_SECOND_NUM||";
+				  sql += "   		  		 NUM_NUMBERS.OBOZ_THERD_NUM|| ";
+				  sql += "    		  		 NUM_NUMBERS.OBOZ_POSTFIX)";
+			      sql += "            ) like '"+oboznachenie+"%' ";
+				
+		/*String sql="SELECT  Upper(u.fullname) "
+				+ " FROM "
+				+ "      proeuser.NUM_NUMBERS n "
+				+ "       inner join "
+				+ "      proeuser.users u "
+				+ "       on (n.user_id=u.ID)"
+				+ "      where (	trim(n.OBOZ_PREFIX||"
+				+ " 		  		n.OBOZ_FIRST_NUM|| "
+				+ "   		  		n.OBOZ_SECOND_NUM||"
+				+ "   		  		n.OBOZ_THERD_NUM|| "
+				+ "    		  		n.OBOZ_POSTFIX)"
+				+ "            ) like '"+oboznachenie+"%' ";
+			*/
+			//System.out.println(" oboznachenie: "+oboznachenie);
 		stmt.setQueryTimeout(QUERY_TIMEOUT);
 		rs=stmt.executeQuery(sql);
 		if(rs.next()){
@@ -1848,7 +1973,7 @@ out+=("</table>");
 					"values("+ID+",(Select ID from NOTE_PROGRAM where PROGRAM_NAME like 'Нумератор'), '"+TEXT+"', "+
 								  "(Select ID from USERS where FULLNAME like '"+FULLNAME+"'), '"+f.format("%td.%tm.%tY", today,today,today)+"',"+
 					"null,null,null,(Select ID from NOTE_STATUS where STATUS like 'Ожидает'),(Select ID from NOTE_TYPE where type LIKE '"+TYPE+"'))";
-		
+		f.close();
 		//выполняем запрос
 		OC.getCon().setAutoCommit(false);
 		Statement st = OC.getCon().createStatement();
