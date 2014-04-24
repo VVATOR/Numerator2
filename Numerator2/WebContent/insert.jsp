@@ -115,10 +115,7 @@ if (request.getParameter("Action") != null)
 	
 	
 	if(request.getParameter("zanyat") != null)
-		zanyat = new String (request.getParameter("zanyat").getBytes("ISO-8859-1"));
-		
-		
-	
+		zanyat = new String (request.getParameter("zanyat").getBytes("ISO-8859-1"));	
 	
 	//применяемость
 	if(request.getParameter("VHODIMOST") != null)
@@ -497,11 +494,11 @@ function selChange_old()
 	
 </script>
 <%
-	ExplodedOBOZ = num.ExplodeOBOZ(SelectedItem);
+/*	ExplodedOBOZ = num.ExplodeOBOZ(SelectedItem);
 	temp = ExplodedOBOZ.split(delimiter);
 	//if(zanyat.equals("")){
 		zanyat = sql.occupied(NEWOBOZ);
-//	}
+//	}*/
 %>
 <script>
 	$(document).ready(function(){

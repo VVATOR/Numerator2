@@ -3,6 +3,7 @@
 <%@page import="OracleConnect.SQLRequest" import="OracleConnect.SQLRequest_1" import="OracleConnect.OracleConnect"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="java.net.URLDecoder"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -53,48 +54,57 @@ if(session.getAttribute("DEPARTMENT") != null) DEPARTMENT = session.getAttribute
 String SelectedItem="";
 if(request.getParameter("SelectedItem") != null)
 	 SelectedItem = new String (request.getParameter("SelectedItem").getBytes("ISO-8859-1"));
-//Действие
-String Action="";
-if (request.getParameter("Action") != null) 
-	Action = new String(request.getParameter("Action").getBytes("ISO-8859-1"));
 String OBOZ="";
 if (request.getParameter("OBOZ") != null) 
 	OBOZ = new String(request.getParameter("OBOZ").getBytes("ISO-8859-1"));
 //список удаляемых объектов
 if(request.getParameter("DELETE_LIST") != null)
 	  DELETE_LIST = new String (request.getParameter("DELETE_LIST").getBytes("ISO-8859-1"));
-
-if(Action.equals("1"))
-{
-	  //--------------------------------------- удаление выбранных узлов ---------------------------------------------------------
-	  // ОБОЗНАЧЕНИЕ УДАЛЯЕМОГО     ОБОЗНАЧЕНИЕ СОДЕРЖАЩЕГО ЕГО КОМПОНЕНТА   ОПЦИЯ УДАЛЯТЬ СВЯЗЬ ИЛИ ВСЕ
-	  //                                                                     0 - удалить связь (NUM_RELATIONS)
-	  //                                                                     1 - далить связь и запись (NUM_RELATIONS,NUM_NUMBERS)
-	  //--------------------------------------------------------------------------------------------------------------------------
-	  temp = DELETE_LIST.split(delimiter);
-	  i = 0;
-	  //out.println("DELETE_COMMAND: Action = 9 Count = " + temp.length + "<BR>");
-	  while((i+3) <= temp.length){  
-	  	DEL_OBOZ = temp[i];
-	  	DEL_PARENT_OBOZ = temp[i+1];
-	  	DEL_TYPE = temp[i+2];
-	  	//out.println("DELETE_COMMAND: " + DEL_OBOZ + " - " + DEL_PARENT_OBOZ + " - " + DEL_TYPE + "<BR>");
-	  	i=i+3;
-	  	sql.InsertStatistic("4",FULLNAME,"Определение наименования отключено для ускорения работы",DEL_OBOZ);
-	  	sql.DeleteRecord(DEL_TYPE,DEL_OBOZ,DEL_PARENT_OBOZ);
-	  }	  
-	  //и возвращаемся на главную страницу
-	  URL = "index.jsp?SelectedItem=" + URLEncoder.encode(SelectedItem,"windows-1251");
-	  response.sendRedirect(URL);
-}
 %>
 </head>
 <body  id="dt_example"  background="images/background.png">
+
+<%
+//Действие
+String Action="";
+if (request.getParameter("Action") != null){
+	Action = new String(request.getParameter("Action").getBytes("ISO-8859-1"));
+	if(Action.equals("1"))
+	{
+		System.out.println("lol");
+		  //--------------------------------------- удаление выбранных узлов ---------------------------------------------------------
+		  // ОБОЗНАЧЕНИЕ УДАЛЯЕМОГО     ОБОЗНАЧЕНИЕ СОДЕРЖАЩЕГО ЕГО КОМПОНЕНТА   ОПЦИЯ УДАЛЯТЬ СВЯЗЬ ИЛИ ВСЕ
+		  //                                                                     0 - удалить связь (NUM_RELATIONS)
+		  //                                                                     1 - далить связь и запись (NUM_RELATIONS,NUM_NUMBERS)
+		  //--------------------------------------------------------------------------------------------------------------------------
+		  temp = DELETE_LIST.split(delimiter);
+		  i = 0;
+		  //out.println("DELETE_COMMAND: Action = 9 Count = " + temp.length + "<BR>");
+		  while((i+3) <= temp.length){  
+		  	DEL_OBOZ = temp[i];
+		   	DEL_PARENT_OBOZ = temp[i+1];
+		  	DEL_TYPE = temp[i+2];
+		  	//out.println("DELETE_COMMAND: " + DEL_OBOZ + " - " + DEL_PARENT_OBOZ + " - " + DEL_TYPE + "<BR>");
+		  	i=i+3;
+		  	sql.InsertStatistic("4",FULLNAME,"Определение наименования отключено для ускорения работы",DEL_OBOZ);
+		  	sql.DeleteRecord(DEL_TYPE,DEL_OBOZ,DEL_PARENT_OBOZ );
+		  }	  
+		  //и возвращаемся на главную страницу
+		  URL = "index.jsp?SelectedItem=" + URLEncoder.encode(SelectedItem,"windows-1251");
+		  response.sendRedirect(URL);
+	 
+		
+	}
+	
+}else{
+%>
+
+
 	<div class="full_width big" align=center>Удаление</div>
 	<img name=pict1 border=0 onClick="GoHome()" src="images/BUTTON_LEFT.PNG" onMouseOver="changeImg1('images/BUTTON_LEFT_SELECTED')" onMouseOut="changeImg1('images/BUTTON_LEFT')">
 	<h4><font color="#6495ED">Будет удалено выбранное обозначение а так же связанные объекты в случае их наличия:</font></h4>
-	<form name=form1 action=Delete.jsp>
-		<input type="text" value="2" name="Action" style="display: none;"/>  
+	<form name="form1" id="form1" name="form1"  action=Delete.jsp>
+		<input type="text" value="2" name="Action" id="Action" style="display: none;"/>  
 		<input type="text" value="<%=SelectedItem%>" name="SelectedItem" style="display: none;"/>
 		<%
 		out.println("<table border=1>");
@@ -118,6 +128,7 @@ if(Action.equals("1"))
 		  //отображаем данные для удаления
 		  sql.GetTreeForOBOZ(OBOZ);
 		  index = 1;
+		  System.out.println("xxxx");
 		  while(sql.rs.next()){
 			out.println("  <tr bgcolor=\"white\">");
 			sql_1.GetOBOZRelationsCount(sql.rs.getString("TREE").trim());
@@ -185,10 +196,11 @@ if(Action.equals("1"))
 		 // sql_1.Disconnect();
 		%>
 		<br>
-		<img name=pict2 border=0 onClick="Delete()" src="images/BUTTON_DELETE.PNG" onMouseOver="changeImg2('images/BUTTON_DELETE_SELECTED')" onMouseOut="changeImg2('images/BUTTON_DELETE')">
+		<img name=pict2 border=0 onClick="Delete();" src="images/BUTTON_DELETE.PNG" onMouseOver="changeImg2('images/BUTTON_DELETE_SELECTED')" onMouseOut="changeImg2('images/BUTTON_DELETE')">
 	</form>
 	<form name=form2 action=index.jsp>
 		<input type="text" value="<%=SelectedItem%>" name="SelectedItem" style="display: none;"/>
 	</form>
+	<%} %>
 </body>
 </html>

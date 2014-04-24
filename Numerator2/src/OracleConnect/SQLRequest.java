@@ -1,6 +1,5 @@
 package OracleConnect;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -1757,43 +1756,65 @@ out+=("</table>");
 	}
 	
 	
-	public void DeleteRecord(String DEL_TYPE, String DEL_OBOZ, String DEL_PARENT_OBOZ) throws Exception{
+	public void  DeleteRecord(String DEL_TYPE, String DEL_OBOZ, String DEL_PARENT_OBOZ)  throws Exception{
+	 
+	try{	
 	 String sql="";
-	 String sql_num="";
+	 String sql_num="";	
 	 SQLRequest_1 sql_1 = new SQLRequest_1();
-	 sql_1.SearchIzd(DEL_OBOZ);
-	 sql_1.rs1.next();
-	 String UzelID = sql_1.rs1.getString("ID");
+	 sql_1.SearchIzd(DEL_OBOZ);	 
+	 sql_1.rs1.next(); 
+	 String UzelID = sql_1.rs1.getString("ID");	
 	 sql_1.SearchIzd(DEL_PARENT_OBOZ);
 	 sql_1.rs1.next();
-	 String ParentID = sql_1.rs1.getString("ID");
-	 sql= "DELETE FROM NUM_RELATIONS WHERE CHILD_ID = " + UzelID + " AND PARENT_ID = " + ParentID;
-	 sql_num = "DELETE FROM  NUM_NUMBERS WHERE ID = " + UzelID;
+	 String ParentID = sql_1.rs1.getString("ID");	
+	 sql= "DELETE FROM NUM_RELATIONS WHERE CHILD_ID = " + UzelID + " AND PARENT_ID = " + ParentID;	
+	 sql_num = "DELETE FROM  NUM_NUMBERS WHERE ID = " + UzelID;	
 	 OC.getCon().setAutoCommit(false);
 	 Statement st = OC.getCon().createStatement();
 	 boolean error=true;
 	 try {
 	   //Выполняем запрос
 	   st.setQueryTimeout(QUERY_TIMEOUT);
-	   if (DEL_TYPE.equals("0")){
+	   /*if (DEL_TYPE.equals("0")){
 		   st.executeUpdate(sql);						  
-		   st.close(); 
-	   }
-	   if (DEL_TYPE.equals("1")){
+		   st.close();  
+		    System.out.println("sql: "+sql);
+	   }*/
+		    
+		   Statement sts = OC.getCon().createStatement();	    
+	  // if (DEL_TYPE.equals("1")){
 		   st.executeUpdate(sql); 
-		   st.executeUpdate(sql_num);  
-	   }
+		  // st.close();
+		   sts.executeUpdate(sql_num); 
+		 //  sts.close();
+		    System.out.println("sql: "+sql);
+		    System.out.println("sql_num: "+sql_num);
+	  // }
 		   
 	 }
 	 catch (Exception e){ 
 	   e.printStackTrace(); 
+	   System.out.println("errorTrace");
 	   error=false;
 	 }
-	 if (error)
-	  OC.getCon().commit();
-	 else{
+	 if (error){
+		 {
+			 OC.getCon().commit();
+			 System.out.println("выполнено");
+		 }
+		 
+	 }else{
 	  OC.getCon().rollback();
+	  System.out.println("косяк");
 	 }
+
+	 OC.Disconnected();
+	 //OC.getCon().close();
+	 System.out.println("rs5");
+	}catch(Exception e){
+		//System.out.println("Ошибка при удалении номера");
+	}
 	}
 	
 	public void InsertStatistic(String Action, String Username, String Naim, String Oboz) throws Exception{
@@ -1808,7 +1829,7 @@ out+=("</table>");
 				 ID = sql_1.rs1.getString("MAX(ID)");
 				 //если ID не первый увеличиваем его на 1
 				 iID = Integer.parseInt(ID);
-				 iID++;
+				 iID++; 
 				 ID = String.valueOf(iID).toString();
 			 }
 			 else ID = "0";

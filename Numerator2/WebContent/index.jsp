@@ -146,11 +146,11 @@
 		//s = "Wst";
 		//s = "AWT";
 		//s="SAG";//Шаго
-		//s="ANTONS";//Черненков
+		//s="ANTONS";//Черненков 
 		//s="SAI";//Стреницкая
 		//s="ALEXNL";
 		//s="GVA"; 
-		s="SCHET";//Щетинин
+		//s="SCHET";//Щетинин
 		SessionUser = s;
 		//получаем ФИО этого пользователя
 		SessionUser = SessionUser.toUpperCase();
